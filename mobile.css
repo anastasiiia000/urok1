@@ -1,0 +1,714 @@
+/* MOBILE ADAPTATION — keeps the approved desktop design unchanged.
+   Mobile screens use the same content and interactions, rearranged into readable vertical layouts. */
+
+@media (max-width: 850px) {
+  :root {
+    --chrome-h: 32px;
+    --nav-h: 46px;
+    --controls-h: 54px;
+  }
+
+  html, body {
+    width: 100%;
+    height: 100%;
+    min-height: 100%;
+    overflow: hidden !important;
+    overscroll-behavior: none;
+  }
+
+  body {
+    height: 100vh !important;
+    height: 100dvh !important;
+    min-height: 0 !important;
+    display: flex !important;
+    flex-direction: column !important;
+  }
+
+  .macbar {
+    height: var(--chrome-h) !important;
+    min-height: var(--chrome-h) !important;
+    flex: 0 0 var(--chrome-h) !important;
+    padding: 0 12px !important;
+    gap: 8px;
+    font-size: 10px !important;
+  }
+
+  .mac-left, .mac-right { gap: 8px !important; }
+  .mac-left span:not(.apple-mark),
+  .mac-right span:not(#clock):not(.mac-case) { display: none !important; }
+  .apple-mark { font-size: 14px !important; }
+  .mac-case { font-size: 8px !important; letter-spacing: .04em !important; }
+
+  .progress-line {
+    height: 2px !important;
+    min-height: 2px !important;
+    flex: 0 0 2px !important;
+  }
+
+  .stage-navigation {
+    height: var(--nav-h) !important;
+    min-height: var(--nav-h) !important;
+    max-height: var(--nav-h) !important;
+    flex: 0 0 var(--nav-h) !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: flex-start !important;
+    gap: 5px !important;
+    padding: 5px 9px !important;
+    overflow-x: auto !important;
+    overflow-y: hidden !important;
+    scrollbar-width: none !important;
+    -webkit-overflow-scrolling: touch;
+    border-left: 0;
+    border-right: 0;
+  }
+  .stage-navigation::-webkit-scrollbar { display: none !important; }
+  .stage-navigation a {
+    flex: 0 0 auto !important;
+    min-height: 34px !important;
+    height: 34px !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    gap: 5px !important;
+    padding: 5px 8px !important;
+    font-size: 9px !important;
+    white-space: nowrap !important;
+  }
+  .stage-navigation a b { font-size: 9px !important; }
+  .stage-navigation a span { margin-left: 0 !important; }
+
+  main#top {
+    position: relative !important;
+    flex: 1 1 0 !important;
+    width: 100% !important;
+    min-height: 0 !important;
+    height: auto !important;
+    overflow: hidden !important;
+  }
+
+  .screen-view {
+    position: absolute !important;
+    inset: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+    min-height: 100% !important;
+    max-height: none !important;
+    overflow-x: hidden !important;
+    overflow-y: auto !important;
+    overscroll-behavior: contain !important;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: thin !important;
+    padding-bottom: 22px;
+  }
+  .screen-view.is-active { display: block !important; }
+  .screen-view:not(.is-active) { display: none !important; }
+
+  .screen-controls {
+    height: var(--controls-h) !important;
+    min-height: var(--controls-h) !important;
+    max-height: var(--controls-h) !important;
+    flex: 0 0 var(--controls-h) !important;
+    display: none;
+    align-items: center !important;
+    justify-content: space-between !important;
+    gap: 7px !important;
+    padding: 5px 9px !important;
+    overflow: hidden !important;
+  }
+  .screen-controls.is-visible { display: flex !important; }
+  .screen-control {
+    min-width: 0 !important;
+    min-height: 40px !important;
+    height: 40px !important;
+    padding: 8px 10px !important;
+    font-size: 9px !important;
+    white-space: nowrap;
+    flex: 0 0 auto;
+  }
+  .screen-control-meta {
+    min-width: 0;
+    flex: 1 1 auto;
+    text-align: center;
+    gap: 3px !important;
+    font-size: 7px !important;
+  }
+  .screen-mini-progress { justify-content: center; gap: 3px !important; }
+  .screen-mini-progress i { width: 11px !important; height: 3px !important; }
+  body[data-screen="desktop"] .stage-navigation,
+  body[data-screen="cover"] .stage-navigation,
+  body[data-screen="desktop"] .screen-controls,
+  body[data-screen="cover"] .screen-controls { display: none !important; }
+
+  .section-kicker {
+    min-height: 14px;
+    font-size: 9px !important;
+    line-height: 1.3 !important;
+    letter-spacing: .09em !important;
+  }
+
+  /* ENTRY DESKTOP — rearranged as a calm mobile file desk. */
+  .desktop-launcher.screen-view.is-active {
+    display: grid !important;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) !important;
+    grid-auto-rows: auto;
+    align-content: start;
+    gap: 16px 12px !important;
+    padding: 19px 16px 26px !important;
+    overflow-y: auto !important;
+    background-size: 42px 42px !important;
+  }
+  .launcher-topline {
+    position: static !important;
+    grid-column: 1 / -1;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 5px 12px;
+    font-size: 8px !important;
+    line-height: 1.35;
+  }
+  .launcher-topline span:last-child { font-size: 7px; }
+  .launcher-icons {
+    position: static !important;
+    grid-column: 1 / -1;
+    display: flex !important;
+    flex-direction: row !important;
+    justify-content: flex-start;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    width: 100%;
+    gap: 9px !important;
+    margin: 0 !important;
+  }
+  .desktop-icon {
+    width: 76px !important;
+    min-height: 72px;
+    gap: 3px !important;
+    padding: 3px !important;
+    font-size: 8px !important;
+  }
+  .desktop-icon img { width: 43px !important; height: 40px !important; }
+  .launcher-main-copy {
+    position: static !important;
+    grid-column: 1 / -1;
+    width: 100% !important;
+    max-width: none !important;
+    margin: 3px 0 0 !important;
+  }
+  .launcher-overline { font-size: 8px !important; }
+  .launcher-wordmark {
+    margin: 9px 0 10px !important;
+    font-size: clamp(48px, 13vw, 74px) !important;
+    line-height: .9 !important;
+    overflow-wrap: anywhere;
+  }
+  .launcher-main-copy p {
+    max-width: 340px;
+    font-size: 14px !important;
+    line-height: 1.35 !important;
+  }
+  .launcher-case-folder {
+    position: static !important;
+    grid-column: 1 / -1;
+    width: 100% !important;
+    max-width: none !important;
+    margin: 0 !important;
+    padding: 9px 12px !important;
+    transform: none !important;
+  }
+  .launcher-folder-image img { width: 52px !important; height: 46px !important; }
+  .launcher-folder-copy b { font-size: 17px !important; }
+  .launcher-folder-copy strong { font-size: 10px !important; }
+  .launcher-photo {
+    position: relative !important;
+    top: auto !important;
+    right: auto !important;
+    bottom: auto !important;
+    left: auto !important;
+    width: 100% !important;
+    height: 145px !important;
+    min-width: 0 !important;
+    margin: 0 !important;
+    transform: none !important;
+  }
+  .launcher-photo img { width: 100%; height: 112px !important; object-fit: cover; }
+  .launcher-photo span { font-size: 7px !important; }
+  .launcher-photo-a, .launcher-photo-b { grid-column: auto; }
+  .launcher-note {
+    position: static !important;
+    grid-column: 1 / -1;
+    width: 100%;
+    max-width: none !important;
+    margin: 0 !important;
+    padding: 11px 12px !important;
+  }
+  .launcher-note b { font-size: 9px !important; }
+  .launcher-note small { font-size: 10px !important; line-height: 1.35; }
+  .launcher-footer {
+    position: static !important;
+    grid-column: 1 / -1;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px 12px;
+    margin-top: 0 !important;
+    font-size: 7px !important;
+  }
+
+  /* COVER — same identity, ordered vertically for a phone. */
+  .hero.screen-view.is-active {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: stretch;
+    gap: 15px;
+    position: absolute !important;
+    padding: 20px 17px 22px !important;
+    min-height: 100% !important;
+    height: auto !important;
+    max-height: none !important;
+    overflow-y: auto !important;
+  }
+  .hero .desktop-label {
+    position: static !important;
+    inset: auto !important;
+    margin: 0 0 2px !important;
+    font-size: 8px !important;
+    line-height: 1.35;
+  }
+  .hero-title-block {
+    position: relative !important;
+    inset: auto !important;
+    width: 100% !important;
+    max-width: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+  .hero .micro-label { font-size: 8px !important; margin-bottom: 10px !important; }
+  .hero h1 {
+    max-width: 100% !important;
+    font-size: clamp(43px, 11vw, 60px) !important;
+    line-height: .95 !important;
+    letter-spacing: -.07em !important;
+  }
+  .hero .copy-popover {
+    position: relative !important;
+    top: auto !important;
+    left: auto !important;
+    display: none;
+    width: max-content;
+    margin: 8px 0 0 68px;
+    transform: none !important;
+  }
+  .hero .copy-popover.show { display: flex !important; }
+  .hero-subline { margin: 15px 0 0 2px !important; gap: 10px !important; }
+  .hero-subline p { font-size: 14px !important; line-height: 1.4 !important; }
+  .hero-actions {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 11px !important;
+    margin: 16px 0 0 2px !important;
+  }
+  .hero .blue-button { min-height: 44px; display: inline-flex; align-items: center; }
+  .hero-meta { font-size: 8px !important; }
+  .hero .cover-back-link { font-size: 9px !important; }
+  .hero .floating-folder,
+  .hero .small-file,
+  .hero .cursor-pixel { display: none !important; }
+  .hero .hero-product-window {
+    position: relative !important;
+    top: auto !important;
+    right: auto !important;
+    left: auto !important;
+    bottom: auto !important;
+    width: min(100%, 350px) !important;
+    max-width: 350px;
+    margin: 0 auto;
+    transform: none !important;
+  }
+  .hero .hero-product-window > img {
+    width: 100%;
+    height: clamp(205px, 65vw, 290px) !important;
+    object-fit: contain !important;
+  }
+  .hero-bottom {
+    position: static !important;
+    inset: auto !important;
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    margin-top: auto !important;
+    padding-top: 10px;
+    font-size: 7px !important;
+    line-height: 1.3;
+  }
+  .hero-btm-right { display: none !important; }
+
+  /* COMPLAINT + HYPOTHESIS. */
+  .complaint-screen.is-active { display: block !important; }
+  .complaint-page {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 15px !important;
+    width: 100%;
+    height: auto !important;
+    min-height: 100% !important;
+    max-height: none !important;
+    padding: 19px 15px 25px !important;
+    overflow: visible !important;
+  }
+  .complaint-heading { margin: 0 !important; align-items: center !important; }
+  .complaint-heading h2 { font-size: clamp(36px, 10vw, 48px) !important; line-height: .98 !important; }
+  .hypothesis-card {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: stretch !important;
+    gap: 11px !important;
+    padding: 15px !important;
+    border-radius: 10px;
+  }
+  .hypothesis-title h3 { font-size: 23px !important; line-height: 1.05 !important; }
+  .hypothesis-statement p { font-size: 15px !important; line-height: 1.38 !important; }
+  .hypothesis-statement small { font-size: 10px !important; line-height: 1.35; }
+  .hypothesis-choice { width: 100%; }
+  .hypothesis-options { display: grid !important; grid-template-columns: 1fr !important; gap: 7px !important; }
+  .hypothesis-options button {
+    width: 100% !important;
+    min-height: 43px !important;
+    padding: 10px 12px !important;
+    font-size: 12px !important;
+    text-align: center;
+  }
+  .hypothesis-status { font-size: 9px !important; margin-top: 7px; line-height: 1.35; }
+  .complaint-content-grid {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: stretch !important;
+    gap: 14px !important;
+    height: auto !important;
+  }
+  .complaint-window { width: 100% !important; height: auto !important; min-height: 0 !important; }
+  .complaint-window .window-bar { min-height: 29px; }
+  .doc-content {
+    display: block !important;
+    height: auto !important;
+    min-height: 0 !important;
+    overflow: visible !important;
+    padding: 17px 16px !important;
+  }
+  .doc-meta { display: flex; flex-wrap: wrap; gap: 5px 12px; font-size: 8px; }
+  .doc-stamp { position: relative !important; top: auto !important; right: auto !important; display: inline-block; margin: 10px 0 3px auto; font-size: 8px !important; }
+  .doc-content h3 { max-width: 100% !important; font-size: 20px !important; line-height: 1.15 !important; margin: 9px 0 !important; }
+  .doc-content p { font-size: 14px !important; line-height: 1.45 !important; margin: 9px 0 !important; }
+  .doc-sign { margin-top: 13px !important; }
+  .compact-object-panel {
+    display: grid !important;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) !important;
+    grid-template-rows: auto minmax(150px, auto) auto !important;
+    align-items: center !important;
+    gap: 10px !important;
+    width: 100% !important;
+    max-width: none !important;
+    height: auto !important;
+  }
+  .compact-object-panel .object-lead { grid-column: 1 / -1; font-size: 14px !important; line-height: 1.4 !important; }
+  .compact-object-panel .object-photo-wrap {
+    grid-column: 1;
+    height: 175px !important;
+    min-height: 0 !important;
+    padding: 6px !important;
+    overflow: hidden;
+  }
+  .compact-object-panel .object-photo { width: 100%; height: 100% !important; min-height: 0 !important; object-fit: contain !important; }
+  .compact-object-panel .object-caption {
+    grid-column: 2;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 8px !important;
+    margin: 0 !important;
+  }
+  .object-caption b { font-size: 16px !important; line-height: 1.2; }
+  .object-caption small { font-size: 9px !important; }
+  .id-chip { font-size: 9px !important; }
+
+  /* DEPARTMENT FOLDERS AND INSPECTOR. */
+  .departments-section.is-active {
+    display: block !important;
+    padding: 20px 14px 25px !important;
+    height: auto !important;
+    min-height: 100% !important;
+    overflow-y: auto !important;
+  }
+  .folders-heading {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 8px !important;
+    margin: 15px 0 16px !important;
+  }
+  .folders-heading h2 { font-size: clamp(34px, 9vw, 46px) !important; line-height: .98; }
+  .folders-heading p { max-width: none !important; font-size: 13px !important; line-height: 1.4; }
+  .department-workspace { display: flex !important; flex-direction: column !important; gap: 14px !important; }
+  .folder-desk {
+    display: grid !important;
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    align-items: stretch !important;
+    justify-content: stretch !important;
+    gap: 10px !important;
+    min-height: 0 !important;
+    height: auto !important;
+    padding: 8px 2px 12px !important;
+  }
+  .folder {
+    width: 100% !important;
+    min-width: 0 !important;
+    min-height: 172px !important;
+    height: 172px !important;
+    margin: 0 !important;
+    padding: 5px 9px 10px !important;
+    transform: none !important;
+    overflow: hidden;
+  }
+  .folder:before { top: 24px !important; height: 132px !important; left: 0 !important; right: 0 !important; }
+  .folder:after { top: 18px !important; }
+  .folder-tab { top: 12px !important; left: 8px !important; width: 58px !important; height: 14px !important; }
+  .folder img { width: 65px !important; height: 58px !important; object-fit: cover !important; margin: 20px auto 5px !important; }
+  .folder-name-group { display: flex !important; flex-direction: column !important; align-items: center !important; gap: 3px !important; width: 100%; text-align: center; }
+  .folder-index { font-size: 19px !important; line-height: 1 !important; }
+  .folder b { font-size: 11px !important; line-height: 1.15 !important; text-align: center !important; }
+  .folder small { display: block !important; margin: 4px 0 0 !important; font-size: 8px !important; line-height: 1.2; text-align: center; }
+  .folder .open-folder { display: none !important; }
+  .folder:last-child { grid-column: 1 / -1; width: calc(50% - 5px) !important; justify-self: center; }
+  .folder-inspector { width: 100% !important; min-width: 0 !important; }
+  .inspector-content { display: block !important; padding: 12px !important; }
+  .inspector-main { display: grid !important; grid-template-columns: 1fr !important; gap: 10px !important; }
+  .inspector-description { min-width: 0 !important; padding: 14px 10px !important; }
+  .inspector-description > small { font-size: 10px !important; margin-bottom: 8px !important; }
+  .inspector-number { font-size: 56px !important; margin: 0 0 8px !important; }
+  .inspector-description h3 { font-size: 21px !important; margin: 0 0 10px !important; line-height: 1.12; }
+  .inspector-description p { font-size: 13px !important; line-height: 1.4 !important; margin-top: 7px !important; }
+  .inspector-question-label { font-size: 9px !important; }
+  .inspector-task-panel { padding: 13px !important; }
+  .inspector-task-panel > small { display: block; margin-bottom: 10px !important; font-size: 12px !important; font-weight: 800 !important; }
+  .inspector-tasks { gap: 9px !important; }
+  .inspector-tasks span { font-size: 13px !important; line-height: 1.4 !important; }
+  .inspector-result { margin-top: 12px; font-size: 9px; }
+  .folder-footnote { margin-top: 12px; flex-wrap: wrap; gap: 8px; font-size: 8px !important; }
+
+  /* RESEARCH TIMER. */
+  .research-section.is-active {
+    display: block !important;
+    padding: 22px 16px 28px !important;
+    height: auto !important;
+    min-height: 100% !important;
+    overflow-y: auto !important;
+  }
+  .research-layout {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: stretch !important;
+    gap: 18px !important;
+    margin-top: 15px !important;
+  }
+  .research-copy h2 { font-size: clamp(42px, 11vw, 56px) !important; line-height: .96; }
+  .research-copy > p { max-width: none !important; font-size: 15px !important; line-height: 1.42 !important; margin: 12px 0 !important; }
+  .research-steps { margin: 14px 0 !important; }
+  .research-steps li { align-items: flex-start !important; gap: 10px !important; margin: 10px 0 !important; font-size: 12px !important; }
+  .research-total { font-size: 9px !important; }
+  .win98-dialog { width: 100% !important; max-width: none !important; margin: 0 !important; }
+  .win98-body { padding: 13px !important; }
+  .timer-display { font-size: clamp(42px, 12vw, 58px) !important; }
+  .timer-actions { display: flex !important; flex-wrap: wrap; gap: 7px !important; }
+  .timer-actions button { min-height: 40px; flex: 1 1 28%; }
+  .research-reminder { margin-top: 14px !important; padding: 13px !important; }
+  .research-reminder p { font-size: 13px !important; line-height: 1.4; }
+
+  /* NEW ECONOMIC CONCEPTS. */
+  .knowledge-section.is-active {
+    display: block !important;
+    padding: 22px 15px 28px !important;
+    height: auto !important;
+    min-height: 100% !important;
+    overflow-y: auto !important;
+  }
+  .knowledge-head {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 9px !important;
+    margin: 15px 0 17px !important;
+  }
+  .knowledge-head h2 { font-size: clamp(40px, 10vw, 54px) !important; line-height: .95; }
+  .knowledge-intro { max-width: none !important; font-size: 14px !important; line-height: 1.4 !important; }
+  .concepts { display: grid !important; grid-template-columns: 1fr !important; gap: 11px !important; }
+  .concept, .concept-wide {
+    grid-column: auto !important;
+    display: flex !important;
+    gap: 12px !important;
+    min-height: 0 !important;
+    padding: 17px 14px !important;
+  }
+  .concept-number { font-size: 27px !important; flex: 0 0 30px; }
+  .concept h3 { font-size: 19px !important; line-height: 1.15; margin: 5px 0 7px !important; }
+  .concept p { font-size: 14px !important; line-height: 1.42 !important; }
+  .concept small { font-size: 8px !important; line-height: 1.3; }
+  .concept-example { margin-top: 8px !important; font-size: 10px !important; }
+  .concept-mark { font-size: 31px !important; }
+  .concept-discovery { display: grid !important; grid-template-columns: 1fr !important; gap: 8px !important; margin-top: 12px !important; padding: 12px !important; }
+  .concept-discovery > span:last-child { display: block !important; white-space: normal !important; }
+
+  /* COST CALCULATOR. */
+  .calculator-section.is-active {
+    display: block !important;
+    padding: 22px 14px 28px !important;
+    height: auto !important;
+    min-height: 100% !important;
+    overflow-y: auto !important;
+  }
+  .calculator-head {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 8px !important;
+    margin: 15px 0 16px !important;
+  }
+  .calculator-head h2 { font-size: clamp(39px, 10vw, 53px) !important; line-height: .96; }
+  .calculator-head p { max-width: none !important; font-size: 14px !important; line-height: 1.4 !important; }
+  .calc-window { width: 100% !important; max-width: none !important; margin: 0 !important; }
+  .calc-window-body {
+    display: grid !important;
+    grid-template-columns: minmax(0, 1fr) !important;
+    gap: 15px !important;
+    padding: 13px !important;
+  }
+  .calc-inputs { padding: 0 0 13px !important; border-right: 0 !important; border-bottom: 1px solid #aaa; }
+  .calc-inputs label {
+    display: grid !important;
+    grid-template-columns: minmax(0, 1fr) minmax(90px, 115px) 20px !important;
+    align-items: center !important;
+    gap: 7px !important;
+    font-size: 12px !important;
+    margin: 7px 0 !important;
+  }
+  .calc-inputs input { width: 100% !important; min-width: 0 !important; min-height: 38px !important; font-size: 14px !important; }
+  .calc-group-title { font-size: 9px !important; line-height: 1.35; margin: 9px 0 !important; }
+  .calc-button { min-height: 42px !important; width: 100%; }
+  .calc-results { min-width: 0 !important; }
+  .result-big { padding: 13px !important; }
+  .result-big b { font-size: clamp(35px, 10vw, 48px) !important; }
+  .result-row { font-size: 11px !important; gap: 8px; }
+  .price-compare { margin-top: 9px !important; }
+  .calc-status { flex-wrap: wrap; gap: 6px 10px; padding: 7px 9px !important; font-size: 7px !important; }
+  .formula-note { display: flex !important; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 7px !important; margin-top: 12px !important; padding: 10px !important; }
+  .formula-note span { font-size: 10px !important; }
+
+  /* FINAL VERDICT, REFLECTION, HOMEWORK. */
+  .verdict-section.is-active {
+    display: block !important;
+    padding: 22px 15px 30px !important;
+    height: auto !important;
+    min-height: 100% !important;
+    overflow-y: auto !important;
+  }
+  .verdict-layout {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: stretch !important;
+    gap: 16px !important;
+    margin-top: 16px !important;
+  }
+  .verdict-copy h2 { font-size: clamp(42px, 11vw, 56px) !important; line-height: .95; }
+  .verdict-copy > p { max-width: none !important; font-size: 14px !important; line-height: 1.42 !important; margin: 12px 0 16px !important; }
+  .verdict-question { font-size: 13px !important; margin-bottom: 8px; }
+  .verdict-options { display: grid !important; grid-template-columns: 1fr !important; gap: 7px !important; }
+  .verdict-options button { min-height: 42px !important; font-size: 12px !important; }
+  .verdict-response { min-height: 0 !important; font-size: 12px !important; line-height: 1.4; margin: 10px 0 !important; }
+  .final-document-button { min-height: 44px; width: 100%; font-size: 10px !important; }
+  .verdict-evidence { width: 100%; padding: 15px !important; }
+  .evidence-price strong { font-size: clamp(38px, 11vw, 52px) !important; }
+  .evidence-pair { gap: 8px !important; }
+  .evidence-pair b { font-size: 21px !important; }
+  .evidence-note p { font-size: 12px !important; line-height: 1.4; }
+  .verdict-bottom {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 12px !important;
+    margin-top: 16px !important;
+  }
+  .reflection { display: grid !important; grid-template-columns: 1fr !important; gap: 9px !important; margin: 0 !important; }
+  .reflection > div { padding: 13px !important; min-width: 0; }
+  .reflection span { font-size: 8px !important; }
+  .reflection b { display: block; font-size: 13px !important; margin: 5px 0 8px; }
+  .reflection input { width: 100% !important; min-height: 40px !important; font-size: 13px !important; }
+  .homework-window {
+    display: grid !important;
+    grid-template-columns: 28px minmax(0, 1fr) !important;
+    gap: 10px !important;
+    padding: 13px !important;
+    align-items: center !important;
+  }
+  .homework-window button { grid-column: 1 / -1; min-height: 42px; margin: 0 !important; width: 100%; }
+  .homework-window b { font-size: 13px !important; }
+  .homework-details {
+    position: relative !important;
+    inset: auto !important;
+    width: 100% !important;
+    max-height: none !important;
+    margin-top: 10px;
+    overflow: visible !important;
+  }
+  .homework-details:not(.show) { display: none !important; }
+  .final-backdrop { position: fixed !important; inset: 0 !important; z-index: 1000 !important; }
+  .final-paper {
+    position: fixed !important;
+    z-index: 1001 !important;
+    left: 10px !important;
+    right: 10px !important;
+    top: 10px !important;
+    bottom: 10px !important;
+    width: auto !important;
+    max-width: none !important;
+    max-height: none !important;
+    overflow-y: auto !important;
+    transform: none !important;
+    padding: 22px 18px !important;
+  }
+  .final-paper h3 { font-size: 22px !important; line-height: 1.15; }
+  .final-paper p { font-size: 14px !important; line-height: 1.45; }
+  .final-recommendations { gap: 8px !important; }
+  .signature-row { gap: 8px !important; flex-wrap: wrap; }
+  .final-close { position: sticky !important; float: right; top: 0; }
+
+  .toast {
+    left: 10px !important;
+    right: 10px !important;
+    bottom: calc(var(--controls-h) + 8px) !important;
+    text-align: center;
+    font-size: 10px !important;
+  }
+
+  button, a { -webkit-tap-highlight-color: transparent; }
+  button { touch-action: manipulation; }
+}
+
+/* Wider mobile / small tablet tuning. */
+@media (min-width: 600px) and (max-width: 850px) {
+  .folder-desk { grid-template-columns: repeat(3, minmax(0,1fr)) !important; }
+  .folder:last-child { grid-column: auto !important; width: 100% !important; }
+  .complaint-content-grid { display: grid !important; grid-template-columns: 1fr 1fr !important; align-items: stretch; }
+  .compact-object-panel { grid-template-columns: 1fr !important; grid-template-rows: auto 220px auto !important; }
+  .compact-object-panel .object-lead { grid-column: 1; }
+  .compact-object-panel .object-photo-wrap { grid-column: 1; }
+  .compact-object-panel .object-caption { grid-column: 1; }
+}
+
+/* Very narrow phones: keep controls and typography comfortable. */
+@media (max-width: 390px) {
+  .mac-case { display: none !important; }
+  .stage-navigation a { padding: 5px 6px !important; font-size: 8px !important; }
+  .screen-control { padding: 7px 8px !important; font-size: 8px !important; }
+  .folder { min-height: 164px !important; height: 164px !important; }
+  .folder b { font-size: 10px !important; }
+  .object-photo-wrap { height: 155px !important; }
+  .calc-inputs label { grid-template-columns: minmax(0,1fr) 92px 16px !important; font-size: 11px !important; }
+}
