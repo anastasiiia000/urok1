@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+
+<html lang="ru">
+<head>
+<meta charset="utf-8"/><meta content="width=device-width, initial-scale=1" name="viewport"/>
+<title>Дело № 01 — Себестоимость и цена</title>
+<link href="style.css?v=7" rel="stylesheet"/><link href="screen_fit.css?v=12" rel="stylesheet"/>
+</head>
+<body>
+<header class="macbar">
+<div class="mac-left"><span class="apple-mark">◉</span><b>ЭКОНОМИКА</b><span>Файл</span><span>Правка</span><span>Вид</span><span>Окно</span><span>Помощь</span></div>
+<div class="mac-right"><span>⌁ Wi-Fi</span><span>◔</span><span id="clock">09:41</span><span class="mac-case">ДЕЛО № 01 / 6 КЛАСС</span></div>
+</header>
+<div class="progress-line"><span id="scrollProgress"></span></div><nav aria-label="Этапы расследования" class="desktop-nav stage-navigation" id="stageNavigation"><a data-screen-target="complaint" href="#complaint"><b>01</b><span>Жалоба</span></a><a data-screen-target="departments" href="#departments"><b>02</b><span>Папки отделов</span></a><a data-screen-target="research" href="#research"><b>03</b><span>Исследование</span></a><a data-screen-target="knowledge" href="#knowledge"><b>04</b><span>Новые понятия</span></a><a data-screen-target="calculator" href="#calculator"><b>05</b><span>Расчёт</span></a><a data-screen-target="verdict" href="#verdict"><b>06</b><span>Вердикт</span></a></nav>
+<main id="top">
+<!-- DESKTOP / входная файловая среда. Папка открывает отдельный экран дела. -->
+<section aria-label="Рабочий стол экспертной комиссии" class="desktop-launcher canvas screen-view launcher-screen is-active" data-screen="desktop" id="desktopHome">
+<div class="launcher-topline"><span><i></i> ЭКОНОМИКА / РАБОЧИЙ СТОЛ КОМИССИИ</span><span>ПОДКЛЮЧЕНИЕ УСТАНОВЛЕНО <b>●</b></span></div>
+<div class="launcher-icons launcher-icons-left">
+<a class="desktop-icon" data-screen-target="departments" href="#departments"><img alt="" src="assets/pixel_folder_blue.png"/><span>Папки отделов</span></a>
+<a class="desktop-icon" data-screen-target="complaint" href="#complaint"><img alt="" src="assets/pixel_folder_pink.png"/><span>Материалы дела</span></a>
+<a class="desktop-icon" data-screen-target="research" href="#research"><img alt="" src="assets/pixel_pc_ref.png"/><span>Рабочая станция</span></a>
+</div>
+<div class="launcher-main-copy">
+<span class="launcher-overline">ЦИФРОВАЯ СРЕДА / ЭКСПЕРТНАЯ КОМИССИЯ</span>
+<div class="launcher-wordmark">ECONOMY<span>LAB</span></div>
+<p>Рабочее пространство для расследования стоимости товаров и услуг.</p>
+</div>
+<a aria-label="Открыть дело 001 — входящие документы" class="launcher-case-folder" data-screen-target="cover" href="#start">
+<span class="launcher-folder-image"><img alt="" src="assets/pixel_folder_blue.png"/></span>
+<span class="launcher-folder-copy"><b>ДЕЛО_001</b><strong>ВХОДЯЩИЕ ДОКУМЕНТЫ</strong><small>Открыть папку <span>↗</span></small></span>
+</a>
+<div class="launcher-photo launcher-photo-a"><img alt="Коллекционная фигурка из материалов дела" src="assets/figure_01.jpg"/><span>ФИГУРКА 01</span></div>
+<div class="launcher-photo launcher-photo-b"><img alt="Коллекция фигурок" src="assets/figures_collection.jpg"/><span>ОБЗОР КОЛЛЕКЦИИ</span></div>
+<div class="launcher-note"><span class="launcher-note-dot"></span><div><b>НОВОЕ ДЕЛО ДОБАВЛЕНО</b><small>Поступило обращение потребителя. Откройте папку, чтобы начать расследование.</small></div></div>
+<div class="launcher-footer"><span>ЭКСПЕРТНАЯ КОМИССИЯ / 6 КЛАСС</span><span>НАЖМИТЕ НА ПАПКУ «ДЕЛО_001»</span></div>
+</section>
+<!-- MAIN SCREEN: composed like the supplied white desktop collage reference -->
+<section class="hero canvas screen-view cover-screen" data-screen="cover" id="start">
+<div class="desktop-label">ЭКОНОМИКА <span>/</span> УЧЕБНОЕ РАССЛЕДОВАНИЕ <span>/</span> 6 КЛАСС</div>
+<div class="hero-title-block">
+<div class="micro-label">ЭКСПЕРТНАЯ КОМИССИЯ · ДЕЛО № 001</div>
+<h1>Себестоимость<br/><span class="selection-wrap"><span class="select-word" id="selectWord">и цена</span><span class="selection-handle handle-left"></span><span class="selection-handle handle-right"></span></span><br/>товаров и услуг<span class="qmark">?</span></h1>
+<div class="copy-popover show" id="copyPopover"><button id="copySelected">Copy</button><button id="pasteSelected">Paste</button></div>
+<div class="hero-subline"><span class="blue-rule"></span><p>Разберёмся, из чего складывается цена коллекционной игрушки — и почему она не равна стоимости материалов.</p></div>
+<div class="hero-actions"><a class="blue-button" data-screen-target="complaint" href="#complaint">ОТКРЫТЬ ДЕЛО <span>↗</span></a><span class="hero-meta">45 МИНУТ <i>·</i> 5 ОТДЕЛОВ <i>·</i> 1 ВЕРДИКТ</span><button class="cover-back-link" data-screen-target="desktop" type="button">← РАБОЧИЙ СТОЛ</button></div>
+</div>
+
+<div class="floating-folder folder-blue">
+<div class="folder-top"><span class="folder-notch"></span></div>
+<div class="folder-thumb"><img alt="Фигурка из присланной коллекции" src="assets/figure_02.jpg"/></div>
+<b>КОЛЛЕКЦИЯ</b><small>ФАЙЛЫ ПЕРСОНАЖЕЙ</small>
+</div>
+<div class="photo-window hero-product-window">
+<div class="window-bar"><span class="traffic"><i></i><i></i><i></i></span><b>ФОТОГРАФИЯ ОБЪЕКТА</b><span class="window-actions">− □ ×</span></div>
+<img alt="Коробка коллекционной фигурки из материалов пользователя" src="assets/collectible_box.jpg"/>
+<div class="photo-caption"><span>ОБЪЕКТ ИССЛЕДОВАНИЯ</span><b>01 / 05</b></div>
+</div>
+<div class="small-file file-a"><span class="file-icon">▧</span><div><b>ФАКТЫ ДЕЛА</b><small>390 ₽ / 65 ₽</small></div></div>
+<div class="small-file file-b"><span class="file-icon pink">▤</span><div><b>ЗАПРОС № 001</b><small>проверка цены</small></div></div>
+<img alt="" class="cursor-pixel" src="assets/pixel_cursor_ref.png"/>
+<div class="hero-bottom"><span>ОТКРОЙТЕ ДЕЛО, ЧТОБЫ ПЕРЕЙТИ К РАССЛЕДОВАНИЮ</span><span class="scroll-arrow">↗</span><span class="hero-btm-right">СТУДИЯ «ФОРМА НАСТРОЕНИЯ» <b>•</b> 21.11.2026</span></div>
+</section>
+<!-- ЭКРАН 01. ЖАЛОБА И ПЕРВОНАЧАЛЬНАЯ ГИПОТЕЗА -->
+<div class="screen-view stage-screen complaint-screen" data-screen="complaint" id="screenComplaint">
+<section class="complaint-page canvas" id="complaint">
+  <div class="section-kicker">01 / ОБРАЩЕНИЕ ПОТРЕБИТЕЛЯ</div>
+  <header class="complaint-heading">
+    <h2>Поступила <em>жалоба</em><span class="heading-star">✳</span></h2>
+  </header>
+  <div class="hypothesis-card" id="hypothesis">
+    <div class="hypothesis-title"><small>ПЕРЕД НАЧАЛОМ РАССЛЕДОВАНИЯ</small><h3>Сначала —<br/><span>ваша гипотеза</span></h3></div>
+    <div class="hypothesis-statement"><p>«Конечная цена товара определяется преимущественно стоимостью материалов, из которых он изготовлен».</p><small>К концу урока комиссия вернётся к этому предположению.</small></div>
+    <div class="hypothesis-choice">
+      <div aria-label="Выбор первоначальной гипотезы" class="hypothesis-options" role="group">
+        <button data-hypothesis="Скорее верна">Скорее верна</button><button data-hypothesis="Скорее неверна">Скорее неверна</button><button class="chosen" data-hypothesis="Пока не уверен(а)">Пока не уверен(а)</button>
+      </div>
+      <div class="hypothesis-status" id="hypothesisStatus">✓ Позиция сохранена: «Пока не уверен(а)»</div>
+    </div>
+  </div>
+  <div class="complaint-content-grid">
+    <article class="complaint-window">
+      <div class="window-bar"><span class="traffic"><i></i><i></i><i></i></span><b>ОБРАЩЕНИЕ ПОТРЕБИТЕЛЯ</b><span class="window-actions">− □ ×</span></div>
+      <div class="doc-content">
+        <div class="doc-meta"><span>В ЭКСПЕРТНУЮ КОМИССИЮ</span><span>№ 001 / 21.11.2026</span></div>
+        <div class="doc-stamp">ПРИНЯТО<br/>К РАССМОТРЕНИЮ</div>
+        <h3>Жалоба на стоимость коллекционной игрушки</h3>
+        <p>«Я приобрёл фигурку из новой серии студии “Форма настроения”. Один сюрприз-бокс стоит <b>390 рублей</b>.</p>
+        <p>Пластик, краска и дополнительные детали для изготовления фигурки обходятся производителю всего в <b>65 рублей</b>. Получается, готовая игрушка стоит в шесть раз дороже материалов!</p>
+        <p>Прошу проверить, из чего складывается себестоимость и можно ли считать установленную цену необоснованно высокой».</p>
+        <div class="doc-sign"><span>ПОТРЕБИТЕЛЬ</span><b>ОБРАЩЕНИЕ ПРИНЯТО</b></div>
+      </div>
+    </article>
+    <aside class="object-panel compact-object-panel">
+      <p class="object-lead">Покупатель считает, что стоимость коллекционной игрушки необоснованно завышена. Комиссии предстоит проверить это утверждение.</p>
+      <div class="object-photo-wrap">
+        <img alt="Исследуемая коллекционная коробка" class="object-photo" src="assets/collectible_box.jpg"/>
+        <div class="scan-frame"><i class="corner c1"></i><i class="corner c2"></i><i class="corner c3"></i><i class="corner c4"></i><span class="scan-cross">＋</span><span class="scan-line"></span></div>
+        <div class="hud-top">ОБЪЕКТ ИДЕНТИФИЦИРОВАН <b>●</b></div>
+        <div class="hud-label">КОД: FM-001<br/>ТИП: КОЛЛЕКЦИОННАЯ ФИГУРКА</div>
+        <div class="hud-bottom"><span>СЕРИЯ 01</span><span>СЮРПРИЗ-БОКС</span></div>
+      </div>
+      <div class="object-caption"><div><small>ОБЪЕКТ ИССЛЕДОВАНИЯ</small><b>Коллекционная фигурка</b></div><span class="id-chip">FM / 001</span></div>
+    </aside>
+  </div>
+</section>
+</div>
+<!-- ЭКРАН 02. ПАПКИ ЭКСПЕРТНЫХ ОТДЕЛОВ -->
+<section class="departments-section canvas screen-view stage-screen" data-screen="departments" id="departments">
+  <div class="section-kicker">02 / ПЯТЬ ЭКСПЕРТНЫХ ОТДЕЛОВ</div>
+  <div class="folders-heading"><h2>Откройте <em>свою папку</em></h2><p>Каждый отдел изучает отдельную часть дела. Итоговая картина сложится только тогда, когда комиссия объединит все результаты.</p></div>
+  <div class="department-workspace">
+    <div class="folder-desk" aria-label="Папки пяти экспертных отделов">
+      <button class="folder folder-pink active" data-dept="0"><span class="folder-tab"></span><img alt="Фигурка коллекции" src="assets/figure_01.jpg"/><span class="folder-name-group"><span class="folder-index">01</span><b>Производственный аудит</b></span><small>Материалы и ресурсы</small><span class="open-folder">ОТКРЫТЬ ФАЙЛ ↗</span></button>
+      <button class="folder folder-mint" data-dept="1"><span class="folder-tab"></span><img alt="Фигурка коллекции" src="assets/figure_03.jpg"/><span class="folder-name-group"><span class="folder-index">02</span><b>Аудит предприятия</b></span><small>Содержание производства</small><span class="open-folder">ОТКРЫТЬ ФАЙЛ ↗</span></button>
+      <button class="folder folder-blue" data-dept="2"><span class="folder-tab"></span><img alt="Фигурка коллекции" src="assets/figure_04.jpg"/><span class="folder-name-group"><span class="folder-index">03</span><b>Креативная экспертиза</b></span><small>Дизайн и прототип</small><span class="open-folder">ОТКРЫТЬ ФАЙЛ ↗</span></button>
+      <button class="folder folder-yellow" data-dept="3"><span class="folder-tab"></span><img alt="Разработка упаковки" src="assets/packaging_layout.jpg"/><span class="folder-name-group"><span class="folder-index">04</span><b>Экологическая экспертиза</b></span><small>Упаковка и ресурсы</small><span class="open-folder">ОТКРЫТЬ ФАЙЛ ↗</span></button>
+      <button class="folder folder-lilac" data-dept="4"><span class="folder-tab"></span><img alt="Коллекция фигурок" src="assets/figures_collection.jpg"/><span class="folder-name-group"><span class="folder-index">05</span><b>Рыночная экспертиза</b></span><small>Потребительский спрос</small><span class="open-folder">ОТКРЫТЬ ФАЙЛ ↗</span></button>
+    </div>
+    <div class="folder-inspector" id="folderInspector">
+      <div class="inspector-bar"><span class="traffic"><i></i><i></i><i></i></span><b id="inspectorFile">Отдел 01 / Производственный аудит</b><span class="window-actions">− □ ×</span></div>
+      <div class="inspector-content">
+        <div class="inspector-main">
+          <div class="inspector-description">
+            <small id="inspectorRole">ЭКСПЕРТНЫЙ ОТДЕЛ</small>
+            <div class="inspector-number" id="inspectorNumber">01</div>
+            <h3 id="inspectorName">Производственный аудит</h3>
+            <b class="inspector-question-label">ИССЛЕДОВАТЕЛЬСКИЙ ВОПРОС</b>
+            <p id="inspectorQuestion">Как меняется сумма затрат на материалы при изменении количества выпускаемых игрушек?</p>
+          </div>
+          <div class="inspector-task-panel"><small>ЧТО НУЖНО СДЕЛАТЬ</small><div class="inspector-tasks" id="inspectorTasks"></div><div class="inspector-result" id="inspectorResult">РЕЗУЛЬТАТ: РАСЧЁТ + ВЫВОД</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="folder-footnote"><img alt="" src="assets/pixel_folder_ref.png"/><span>ВЫБЕРИТЕ ПАПКУ, ЧТОБЫ ОТКРЫТЬ ЗАДАНИЕ СВОЕГО ОТДЕЛА</span><b>5 ПАПОК / 1 ДЕЛО</b></div>
+</section>
+<!-- RESEARCH TIMER: classic system dialog -->
+<section class="research-section canvas screen-view stage-screen" data-screen="research" id="research">
+<div class="section-kicker">ЭТАП ИССЛЕДОВАНИЯ</div>
+<div class="research-layout">
+<div class="research-copy"><h2>Время<br/><em>исследовать</em></h2><p>Получите карточку своего отдела. Изучите исходные данные, выполните расчёты и сформулируйте один общий вывод, который представите экспертной комиссии.</p><ol class="research-steps"><li><b>01</b><span>Изучите материалы и вопрос отдела.</span></li><li><b>02</b><span>Выполните необходимые расчёты.</span></li><li><b>03</b><span>Запишите результат и подготовьте доклад.</span></li></ol><div class="research-total">НА РАБОТУ ОТДЕЛОВ — <b>9 МИНУТ</b></div></div>
+<div class="win98-dialog">
+<div class="win98-title"><span class="win98-appicon">▣</span><b>Сеанс исследования</b><button aria-label="Закрыть окно">×</button></div>
+<div class="win98-body"><div class="win98-message"><img alt="" src="assets/pixel_hourglass_ref.png"/><div><b>Идёт исследование...</b><small id="timerStatus">Система ожидает запуска сессии.</small></div></div><div class="timer-display" id="timerDisplay">09:00</div><div class="timer-track"><span id="timerProgress"></span></div><div class="timer-actions"><button class="win-button primary" id="timerStart">Старт</button><button class="win-button" id="timerPause">Пауза</button><button class="win-button" id="timerReset">Сброс</button></div><div class="win98-footer"><span>ЗАДАНИЕ № 01</span><span>ВРЕМЯ РАБОТЫ / 09:00</span></div></div>
+</div>
+</div>
+<div class="research-reminder"><span>ПОМНИТЕ</span><p>Каждый отдел видит только часть информации. Не выносите итоговый вердикт до объединения результатов.</p></div>
+</section>
+<!-- KNOWLEDGE / CONCEPTS -->
+<section class="knowledge-section canvas screen-view stage-screen" data-screen="knowledge" id="knowledge">
+<div class="section-kicker">НОВЫЕ ЭКОНОМИЧЕСКИЕ ПОНЯТИЯ</div>
+<div class="knowledge-head"><h2>Что мы<br/><em>обнаружили?</em></h2><div class="knowledge-intro">Сопоставьте результаты отделов: какие расходы меняются вместе с количеством изделий, а какие сохраняют общую сумму?</div></div>
+<div class="concepts">
+<article class="concept concept-wide"><span class="concept-number">01</span><div><small>ОБЩЕЕ ПОНЯТИЕ</small><h3>Производственные затраты</h3><p>Денежные расходы предприятия, связанные с производством продукции. Они включают затраты на материалы, оборудование, организацию производства и другие необходимые ресурсы.</p></div><span class="concept-mark">₽</span></article>
+<article class="concept concept-blue"><span class="concept-number">02</span><div><small>ОБЩАЯ СУММА МЕНЯЕТСЯ</small><h3>Переменные издержки</h3><p>Расходы, общая сумма которых изменяется в зависимости от количества произведённой продукции.</p><div class="concept-example">Материалы · комплектующие · упаковка</div></div></article>
+<article class="concept concept-yellow"><span class="concept-number">03</span><div><small>ОБЩАЯ СУММА НЕ МЕНЯЕТСЯ*</small><h3>Постоянные издержки</h3><p>Расходы, общая сумма которых сохраняется при изменении объёма выпуска в пределах заданных производственных возможностей.</p><div class="concept-example">Аренда · обслуживание оборудования · запуск коллекции</div></div></article>
+</div>
+<div class="definition-foot">* В рамках рассматриваемого периода и имеющихся производственных возможностей.</div>
+<div class="concept-discovery"><span class="copy-small">НОВОЕ ЗНАНИЕ</span><b>Себестоимость — это затраты на производство продукции. Цена — денежная сумма, за которую товар предлагается покупателю.</b><span>СЕБЕСТОИМОСТЬ ≠ ЦЕНА</span></div>
+</section>
+<!-- CALCULATOR: old computer app -->
+<section class="calculator-section canvas screen-view stage-screen" data-screen="calculator" id="calculator">
+<div class="section-kicker">СОБИРАЕМ РЕЗУЛЬТАТЫ ПЯТИ ОТДЕЛОВ</div>
+<div class="calculator-head"><h2>Считаем<br/><em>себестоимость</em></h2><p>Для расчёта используем партию из 200 фигурок и выбранный экологичный вариант упаковки. Внесите данные из карточек отделов.</p></div>
+<div class="calc-window">
+<div class="calc-titlebar"><span class="calc-mini-icon">▦</span><b>Калькулятор себестоимости — 200 шт.</b><div class="calc-controls"><i>_</i><i>□</i><i>×</i></div></div>
+<div class="calc-window-body">
+<div class="calc-inputs">
+<div class="calc-group-title">ПЕРЕМЕННЫЕ ИЗДЕРЖКИ / НА 1 ФИГУРКУ</div>
+<label>Материалы <input id="materials" min="0" type="number" value="65"/> <span>₽</span></label>
+<label>Упаковка <input id="packaging" min="0" type="number" value="25"/> <span>₽</span></label>
+<div class="calc-group-title fixed-title">ПОСТОЯННЫЕ ИЗДЕРЖКИ / НА ПАРТИЮ</div>
+<label>Содержание производства <input id="maintenance" min="0" type="number" value="18000"/> <span>₽</span></label>
+<label>Разработка коллекции <input id="design" min="0" type="number" value="18000"/> <span>₽</span></label>
+<label>Объём производства <input id="quantity" min="1" type="number" value="200"/> <span>шт.</span></label>
+<button class="calc-button" id="calculate">ПЕРЕСЧИТАТЬ <span>↗</span></button>
+</div>
+<div class="calc-results">
+<div class="result-label">РЕЗУЛЬТАТ РАСЧЁТА</div>
+<div class="result-big"><small>СЕБЕСТОИМОСТЬ 1 ШТУКИ</small><b id="acResult">270 ₽</b><span>AC = TC / Q</span></div>
+<div class="result-row"><span>Переменные затраты / 1 шт.</span><b id="variableUnit">90 ₽</b></div>
+<div class="result-row"><span>Переменные затраты / партия</span><b id="variableTotal">18 000 ₽</b></div>
+<div class="result-row"><span>Постоянные затраты / партия</span><b id="fixedTotal">36 000 ₽</b></div>
+<div class="result-row"><span>Общие затраты / партия</span><b id="totalCost">54 000 ₽</b></div>
+<div class="result-divider"></div>
+<div class="price-compare"><span>ЦЕНА НА КОРОБКЕ</span><b>390 ₽</b><small>Разница с себестоимостью: <strong id="priceDifference">120 ₽</strong></small></div>
+</div>
+</div>
+<div class="calc-status"><span>ГОТОВО</span><span>ВСЕ СУММЫ В РУБЛЯХ</span><span>ДЕЛО № 001</span></div>
+</div>
+<div class="formula-note"><b>TC = FC + VC</b><span>Общие затраты = постоянные + переменные издержки</span><i>AC = TC / Q</i></div>
+</section>
+<!-- ЭКРАН 06. ВЕРДИКТ -->
+<section class="verdict-section canvas screen-view stage-screen" data-screen="verdict" id="verdict">
+  <div class="section-kicker">06 / ИТОГОВОЕ ЗАСЕДАНИЕ КОМИССИИ</div>
+  <div class="verdict-layout">
+    <div class="verdict-copy">
+      <h2>Пора вынести<br/><em>вердикт</em></h2>
+      <p>Вернитесь к первоначальной гипотезе. Теперь у комиссии есть результаты пяти исследований и расчёт себестоимости.</p>
+      <div class="verdict-question">Гипотеза подтвердилась?</div>
+      <div class="verdict-options"><button data-verdict="подтверждена">Подтверждена</button><button data-verdict="не подтверждена">Не подтверждена</button><button data-verdict="данных недостаточно">Данных недостаточно</button></div>
+      <div class="verdict-response" id="verdictResponse">Выберите позицию комиссии, затем откройте итоговый документ.</div>
+      <button class="final-document-button" id="showFinal">ОТКРЫТЬ ИТОГОВОЕ ЗАКЛЮЧЕНИЕ ↗</button>
+    </div>
+    <aside class="verdict-evidence">
+      <div class="evidence-top"><span>СОБРАННЫЕ ДОКАЗАТЕЛЬСТВА</span><b>ДЕЛО № 001</b></div>
+      <div class="evidence-price"><small>СЕБЕСТОИМОСТЬ ОДНОЙ ФИГУРКИ</small><strong>270 ₽</strong></div>
+      <div class="evidence-pair"><div><small>ЦЕНА ТОВАРА</small><b>390 ₽</b></div><div><small>СРЕДНЯЯ ЦЕНА АНАЛОГОВ</small><b>400 ₽</b></div></div>
+      <div class="evidence-note"><span>✓</span><p>Стоимость материалов — только одна часть расходов на создание готового товара.</p></div>
+      <div class="evidence-footer">ПЯТЬ ОТДЕЛОВ · ОДИН ОБЩИЙ ВЫВОД</div>
+    </aside>
+  </div>
+  <div class="verdict-bottom">
+    <div class="reflection">
+      <div><span>МОЁ ОТКРЫТИЕ</span><b>Сегодня я узнал(а)…</b><input placeholder="Одна новая мысль" type="text"/></div>
+      <div><span>МОЙ ВЫВОД</span><b>Теперь я понимаю, что…</b><input placeholder="Мой вывод" type="text"/></div>
+    </div>
+    <div class="homework-window"><span class="homework-folder">▰</span><div><small>ДОМАШНЕЕ ЗАДАНИЕ</small><b>«Сколько стоит мастер-класс?»</b></div><button id="homeworkToggle">ОТКРЫТЬ УСЛОВИЕ ↗</button></div>
+  </div>
+  <div class="homework-details" id="homeworkDetails"><button class="homework-close" id="homeworkClose" type="button" aria-label="Закрыть условие">×</button><small>НОВОЕ ДЕЛО / ДОМАШНЯЯ РАБОТА</small><h3>Сколько стоит мастер-класс?</h3><p>Материалы на одного участника — 80 ₽; аренда — 1 200 ₽; работа мастера — 2 800 ₽; участников — 20; цена участия — 300 ₽.</p><ol><li>Разделите расходы на постоянные и переменные.</li><li>Рассчитайте общие затраты.</li><li>Определите себестоимость участия одного человека.</li><li>Сравните себестоимость и цену.</li></ol></div>
+  <div class="final-paper hidden" id="finalPaper" role="dialog" aria-modal="true" aria-labelledby="finalPaperTitle">
+    <button class="final-close" id="finalClose" type="button" aria-label="Закрыть заключение">×</button>
+    <div class="final-paper-top"><span>ЭКСПЕРТНАЯ КОМИССИЯ</span><span>ИТОГОВОЕ ЗАКЛЮЧЕНИЕ / ДЕЛО № 001</span></div>
+    <div class="final-stamp">ВЕРДИКТ</div>
+    <h3 id="finalPaperTitle">Жалоба не подтверждена на основании представленных данных</h3>
+    <p>Стоимость материалов — только одна часть расходов на создание товара. В условиях кейса себестоимость одной фигурки составляет <b>270 рублей</b>, а цена — <b>390 рублей</b>.</p>
+    <p>Цена ниже средней цены трёх представленных аналогов (400 рублей). Однако для полной оценки ценовой политики необходимы сведения о дополнительных расходах на продажу и спросе.</p>
+    <div class="final-recommendations"><b>РЕКОМЕНДАЦИИ ПРОИЗВОДИТЕЛЮ</b><span>01 — Открыто объяснять состав цены.</span><span>02 — Сохранять обоснованный выбор упаковки.</span><span>03 — Учитывать обратную связь покупателей.</span></div>
+    <div class="signature-row"><span>ПОДПИСИ ПРЕДСТАВИТЕЛЕЙ ОТДЕЛОВ</span><span>01 ____ 02 ____ 03 ____ 04 ____ 05 ____</span></div>
+  </div>
+  <div class="final-backdrop" id="finalBackdrop"></div>
+</section>
+
+</main><div aria-label="Переход между этапами" class="screen-controls" id="screenControls"><button class="screen-control secondary" id="screenPrev" type="button">← НАЗАД</button><div class="screen-control-meta"><span id="screenStep"></span><div class="screen-mini-progress" id="screenMiniProgress"><i></i><i></i><i></i><i></i><i></i><i></i></div></div><button class="screen-control primary" id="screenNext" type="button">ДАЛЕЕ →</button></div>
+<div class="toast" id="toast" role="status"></div>
+<script src="app.js?v=10"></script>
+</body></html>

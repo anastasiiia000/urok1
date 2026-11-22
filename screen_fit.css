@@ -1,0 +1,1501 @@
+/* FULL-VIEWPORT LESSON LAYOUT
+   Each active screen is composed to fit in the available laptop viewport.
+   No page-level or screen-level vertical scrolling is used. */
+:root{--chrome-h:32px;--progress-h:2px;--nav-h:46px;--controls-h:52px;}
+html,body{width:100%;height:100%;min-height:0;overflow:hidden!important;scroll-behavior:auto}
+body{display:flex!important;flex-direction:column!important;height:100vh;height:100dvh;min-height:0}
+.macbar{height:var(--chrome-h)!important;min-height:var(--chrome-h)!important;flex:0 0 var(--chrome-h)!important;padding:0 22px}
+.progress-line{height:var(--progress-h)!important;min-height:var(--progress-h)!important;flex:0 0 var(--progress-h)!important;top:auto!important;position:relative!important}
+.stage-navigation{height:var(--nav-h);min-height:var(--nav-h);max-height:var(--nav-h);flex:0 0 var(--nav-h)!important;padding:4px clamp(16px,4vw,58px)!important;gap:6px!important;overflow:hidden!important}
+.stage-navigation a{height:34px;min-height:34px;padding:5px 8px!important;gap:7px!important;white-space:nowrap}
+body main#top{position:relative!important;flex:1 1 0!important;min-height:0!important;height:auto!important;overflow:hidden!important;width:100%}
+.screen-view{display:none!important;position:absolute!important;inset:0!important;width:100%!important;height:100%!important;min-height:0!important;max-height:100%!important;overflow:hidden!important;overscroll-behavior:none!important;scrollbar-width:none!important}
+.screen-view::-webkit-scrollbar{display:none!important}
+.screen-view.is-active{display:flex!important;flex-direction:column!important;animation:screenEnter .18s ease both}
+.screen-controls{height:var(--controls-h);min-height:var(--controls-h);max-height:var(--controls-h);flex:0 0 var(--controls-h)!important;padding:5px clamp(16px,4vw,58px)!important;overflow:hidden}
+.screen-control{min-width:120px;padding:8px 13px!important}
+.screen-control-meta{gap:3px}
+.screen-mini-progress{gap:5px}
+.screen-mini-progress i{width:19px}
+body[data-screen="desktop"] .stage-navigation,body[data-screen="cover"] .stage-navigation{display:none!important}
+body[data-screen="desktop"] .screen-controls,body[data-screen="cover"] .screen-controls{display:none!important}
+
+/* Screen 0 — desktop launcher */
+.desktop-launcher.screen-view{display:block!important;padding:22px 5.5% 18px!important;overflow:hidden!important}
+.launcher-topline{position:relative;z-index:5}
+.launcher-icons{top:100px;left:5.5%;gap:15px 14px}
+.launcher-main-copy{top:clamp(190px,27vh,245px);left:29%;width:min(48%,600px)}
+.launcher-wordmark{font-size:clamp(76px,8vw,112px);margin:12px 0 18px}
+.launcher-main-copy p{font-size:16px}
+.launcher-case-folder{top:clamp(355px,54vh,430px);left:5.5%;width:260px;padding:10px 12px}
+.launcher-photo-a{right:27%;top:82px;width:128px;height:160px}
+.launcher-photo-b{right:6%;top:clamp(280px,42vh,340px);width:190px;height:182px}
+.launcher-note{left:30%;bottom:82px;max-width:350px}
+.launcher-footer{bottom:15px;left:5.5%;right:5.5%;font-size:8px}
+
+/* Cover screen — large title, calm composition, one clear route in */
+.hero.screen-view{display:block!important;padding:0 5.8%!important;min-height:0!important;height:100%!important;overflow:hidden!important}
+.hero .desktop-label{top:26px;left:5.8%;font-size:10px}
+.hero-title-block{position:absolute;left:5.8%;top:clamp(104px,15vh,145px);padding:0!important;width:min(62%,780px);max-width:780px}
+.hero .micro-label{margin-bottom:13px;font-size:10px}
+.hero h1{font-size:clamp(50px,6.15vw,88px);line-height:.91;max-width:780px;letter-spacing:-.075em}
+.hero h1 .selection-wrap{margin-top:4px}
+.hero .copy-popover{left:clamp(140px,17vw,235px);top:clamp(88px,13vh,122px)}
+.hero-subline{margin:20px 0 0 5px;max-width:470px;gap:12px}
+.hero-subline p{font-size:clamp(14px,1.2vw,17px);line-height:1.35;max-width:410px}
+.hero .blue-rule{height:44px}
+.hero-actions{margin:21px 0 0 5px;gap:15px}
+.hero .blue-button{padding:11px 15px}
+.hero-meta{font-size:9px}
+.hero .cover-back-link{font-size:9px}
+.hero .floating-folder{right:8%;top:8%;transform:scale(.9) rotate(5deg);transform-origin:top right}
+.hero .hero-product-window{top:23%;right:9%;width:clamp(210px,22vw,275px);transform:rotate(1deg)}
+.hero .hero-product-window>img{height:clamp(205px,29vh,265px)}
+.hero .file-a{right:34%;top:22%}
+.hero .file-b{right:4%;top:auto;bottom:18%}
+.hero .cursor-pixel{right:32%;top:auto;bottom:16%;width:42px;height:42px}
+.hero-bottom{bottom:13px;left:5.8%;right:5.8%;font-size:8px}
+.hero-bottom .scroll-arrow{width:23px;height:23px}
+.hero .desktop-nav{display:none!important}
+
+/* Shared stage frame */
+.stage-screen{min-height:0!important;height:100%!important;max-height:100%!important;overflow:hidden!important}
+.section-kicker{font-size:9px;line-height:1.2;min-height:14px}
+
+/* Screen 1 — complaint + hypothesis in one balanced frame */
+.complaint-screen{display:flex!important;flex-direction:column!important;background:#fff}
+.complaint-page{width:100%;height:100%;min-height:0;display:grid;grid-template-rows:14px 62px minmax(0,1fr) 106px;gap:9px;padding:17px 5.3% 15px!important;overflow:hidden}
+.complaint-heading{margin:0!important;min-height:0;align-items:center;gap:28px}
+.complaint-heading h2{font-size:clamp(40px,4.5vw,54px)!important;line-height:.95}
+.complaint-lead{font-size:14px;line-height:1.35;max-width:390px;margin:0}
+.complaint-content-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:22px;min-height:0;height:100%}
+.complaint-window{max-width:none;width:100%;height:100%;min-height:0;display:flex;flex-direction:column;transform:none!important;overflow:hidden}
+.complaint-window .window-bar{flex:0 0 28px}
+.doc-content{padding:14px 22px 12px;display:flex;flex-direction:column;min-height:0;flex:1;overflow:hidden}
+.doc-meta{font-size:8px;padding-bottom:8px}
+.doc-stamp{right:22px;top:42px;font-size:8px;padding:6px 8px}
+.doc-content h3{font-size:20px;line-height:1.08;max-width:76%;margin:17px 0 10px}
+.doc-content p{font-size:clamp(12px,1.05vw,14px);line-height:1.35;margin:6px 0}
+.doc-sign{margin-top:auto;padding-top:9px;font-size:8px}
+.compact-object-panel{max-width:none;width:100%;height:100%;min-height:0;display:grid;grid-template-columns:minmax(150px,.92fr) minmax(180px,1.08fr);gap:14px;align-items:stretch}
+.object-photo-wrap{max-width:none;width:100%;height:100%;min-height:0;margin:0;padding:8px;overflow:hidden}
+.object-photo{height:100%;min-height:0;max-height:none;width:100%;object-fit:contain;background:#f2f3f4}
+.scan-frame{inset:30px 22px 42px}
+.hud-top{top:13px;left:13px;right:13px;font-size:7px}
+.hud-label{left:13px;bottom:46px;font-size:7px}
+.hud-bottom{left:12px;right:12px;bottom:12px;font-size:7px}
+.object-side-info{display:flex;flex-direction:column;justify-content:center;gap:13px;min-width:0}
+.object-caption{margin:0;max-width:none;gap:8px}
+.object-caption small{font-size:8px}
+.object-caption b{font-size:14px}
+.id-chip{font-size:8px;padding:4px 6px;white-space:nowrap}
+.facts-float{max-width:none;width:100%;margin:0;box-shadow:none;background:#fff;border:1px solid #e6eaee}
+.facts-float span{padding:8px 9px}
+.facts-float small{font-size:7px}
+.facts-float b{font-size:16px}
+.object-question{border-left:3px solid #0874d7;background:#f5f9fd;padding:9px 12px}
+.object-question small{font-size:8px;color:#0874d7;letter-spacing:.08em}
+.object-question p{margin:4px 0 0;font:13px/1.3 var(--serif);color:#59636e}
+.hypothesis-card{display:grid;grid-template-columns:185px minmax(250px,1fr) minmax(270px,1.15fr);gap:16px;align-items:center;padding:10px 16px;background:#fff;border:1px solid #dce5ee;box-shadow:0 8px 22px rgba(22,48,74,.055);min-height:0;overflow:hidden}
+.hypothesis-title small{font-size:7px;color:#0874d7;letter-spacing:.09em}
+.hypothesis-title h3{font:800 21px/.98 var(--display);letter-spacing:-.05em;margin:5px 0 0}
+.hypothesis-title h3 span{color:#0874d7;font-family:var(--serif);font-style:italic;font-weight:500}
+.hypothesis-statement p{font:14px/1.27 var(--serif);margin:0 0 4px;color:#303943}
+.hypothesis-statement small{font-size:8px;color:#89939e}
+.hypothesis-choice{min-width:0}
+.hypothesis-options{display:flex;gap:5px;flex-wrap:nowrap}
+.hypothesis-options button{font-size:9px;padding:7px 8px;white-space:nowrap}
+.hypothesis-status{font-size:8px;margin-top:6px;min-height:11px}
+
+/* Screen 2 — folders and selected department dossier */
+.departments-section{display:grid!important;grid-template-rows:14px 65px 132px minmax(0,1fr) 22px;gap:6px;padding:17px 5.3% 13px!important;overflow:hidden}
+.folders-heading{margin:0!important;align-items:center;gap:28px}
+.folders-heading h2{font-size:clamp(38px,4.2vw,52px)!important;line-height:.92}
+.folders-heading p{font-size:13px;line-height:1.3;max-width:370px;margin:0}
+.folder-desk{display:flex;flex-wrap:nowrap;align-items:center;justify-content:center;gap:clamp(7px,1vw,14px);padding:0!important;min-height:0!important;height:132px;overflow:visible}
+.folder{flex:1 1 0;width:auto!important;min-width:0;height:128px;min-height:128px!important;padding:0 7px 7px!important;transform:none!important}
+.folder:nth-child(n){margin-top:0!important}
+.folder:before,.folder:after{top:30px;height:91px}
+.folder-tab{top:19px;left:7px;height:14px;width:53px}
+.folder img{width:62px;height:55px;object-fit:cover;margin:0 0 0 18px;transform:rotate(-3deg);border-width:4px}
+.folder b{font-size:8px;margin-top:2px;letter-spacing:.04em}
+.folder small{font-size:9px;margin-top:1px;line-height:1.1}
+.open-folder{font-size:8px;margin-top:4px}
+.folder.active{filter:drop-shadow(0 5px 7px rgba(26,73,110,.13))}
+.folder-inspector{max-width:none;width:100%;height:100%;min-height:0!important;margin:0!important;display:flex;flex-direction:column}
+.inspector-bar{flex:0 0 27px;height:27px}
+.inspector-content{flex:1;min-height:0;grid-template-columns:66px 1fr;gap:15px;padding:10px 16px!important;overflow:hidden}
+.inspector-number{font-size:53px;align-self:start}
+.inspector-main{min-width:0;display:flex;flex-direction:column;justify-content:center}
+.inspector-main small{font-size:8px}
+.inspector-main h3{font-size:19px;margin:2px 0 7px;line-height:1.05}
+.inspector-question-label{font-size:8px}
+.inspector-main p{font-size:14px;line-height:1.22;margin:3px 0 6px}
+.inspector-tasks{gap:6px 12px}
+.inspector-tasks span{font-size:9px;line-height:1.25}
+.inspector-result{font-size:8px;margin-top:7px;padding-top:6px}
+.folder-footnote{max-width:none;margin:0!important;height:22px;min-height:22px;font-size:8px;overflow:hidden}
+.folder-footnote img{width:21px;height:21px}
+
+/* Screen 3 — research instructions + Windows timer */
+.research-section{display:grid!important;grid-template-rows:14px minmax(0,1fr) 48px;gap:8px;padding:18px 5.5% 15px!important;overflow:hidden}
+.research-layout{grid-template-columns:.9fr 1.1fr;gap:clamp(22px,4vw,55px);align-items:center;min-height:0;height:100%;margin:0!important}
+.research-copy h2{font-size:clamp(45px,5vw,62px);line-height:.9}
+.research-copy>p{font-size:15px;line-height:1.36;max-width:390px;margin:14px 0}
+.research-steps{margin:13px 0}
+.research-steps li{font-size:11px;margin:7px 0;gap:9px}
+.research-steps b{width:22px;height:22px;font-size:9px}
+.research-total{font-size:9px}
+.research-total b{font-size:12px}
+.win98-dialog{max-width:520px;width:100%;margin:0 auto;padding:3px}
+.win98-title{height:26px;font-size:11px}
+.win98-body{padding:13px 19px 10px}
+.win98-message{min-height:55px;gap:14px}
+.win98-message img{width:44px;height:55px}
+.win98-message b{font-size:14px}
+.win98-message small{font-size:10px}
+.timer-display{font-size:42px;margin:12px auto 10px}
+.timer-track{height:17px}
+.timer-actions{margin:13px 0 10px;gap:9px}
+.win-button{min-width:78px;padding:6px 10px;font-size:10px}
+.win98-footer{font-size:8px;padding-top:7px}
+.research-reminder{max-width:none;width:100%;height:48px;min-height:48px;margin:0!important;padding:7px 10px 0;gap:14px}
+.research-reminder p{font-size:13px;line-height:1.25}
+
+/* Screen 4 — concepts */
+.knowledge-section{display:grid!important;grid-template-rows:14px 70px minmax(0,1fr) 13px 57px;gap:7px;padding:17px 5.3% 13px!important;overflow:hidden}
+.knowledge-head{margin:0!important;align-items:center;gap:25px}
+.knowledge-head h2{font-size:clamp(40px,4.4vw,54px)!important;line-height:.92}
+.knowledge-intro{font-size:14px;line-height:1.3;max-width:410px}
+.concepts{grid-template-columns:1fr 1fr;grid-template-rows:.72fr 1fr;gap:10px;min-height:0;height:100%}
+.concept{min-height:0!important;padding:12px 16px;gap:13px;overflow:hidden}
+.concept-wide{grid-column:1/-1;align-items:center}
+.concept-number{font-size:30px}
+.concept small{font-size:8px}
+.concept h3{font-size:19px;margin:4px 0 6px;line-height:1.05}
+.concept p{font-size:13px;line-height:1.32}
+.concept-example{font-size:9px;margin-top:8px}
+.concept-mark{font-size:40px}
+.definition-foot{font-size:8px;margin:0 0 0 3px;line-height:1.2}
+.concept-discovery{max-width:none;width:100%;min-height:57px;margin:0!important;padding:9px 13px;grid-template-columns:95px 1fr auto;gap:13px}
+.copy-small{font-size:8px}
+.concept-discovery b{font-size:14px;line-height:1.25}
+.concept-discovery>span:last-child{font-size:9px}
+
+/* Screen 5 — calculator */
+.calculator-section{display:grid!important;grid-template-rows:14px 68px minmax(0,1fr) 23px;gap:7px;padding:17px 5.3% 13px!important;overflow:hidden}
+.calculator-head{margin:0!important;align-items:center;gap:28px}
+.calculator-head h2{font-size:clamp(40px,4.4vw,54px)!important;line-height:.92}
+.calculator-head p{font-size:14px;line-height:1.3;max-width:420px;margin:0}
+.calc-window{width:100%;max-width:940px;min-height:0;height:100%;max-height:100%;margin:0 auto;display:flex;flex-direction:column;overflow:hidden}
+.calc-titlebar{height:27px;min-height:27px;flex:0 0 27px;font-size:11px}
+.calc-window-body{flex:1;min-height:0;grid-template-columns:1fr .9fr;gap:16px;padding:10px 16px;overflow:hidden}
+.calc-inputs{padding-right:16px;min-height:0;overflow:hidden}
+.calc-group-title{font-size:8px;margin-bottom:6px}
+.calc-group-title.fixed-title{margin-top:12px}
+.calc-inputs label{grid-template-columns:1fr 118px 16px;gap:6px;margin:5px 0;font-size:10px}
+.calc-inputs input{padding:4px 6px;font-size:11px}
+.calc-button{margin-top:9px;padding:6px 12px;font-size:9px}
+.calc-results{padding:9px 12px;min-height:0;overflow:hidden}
+.result-label{font-size:8px}
+.result-big{margin:6px 0;padding:7px 10px}
+.result-big small{font-size:8px}
+.result-big b{font-size:34px}
+.result-big span{font-size:9px}
+.result-row{padding:6px 0;font-size:9px;line-height:1.15}
+.result-row b{font-size:10px}
+.result-divider{margin:7px 0}
+.price-compare span{font-size:8px}
+.price-compare>b{font-size:24px}
+.price-compare small{font-size:9px}
+.calc-status{font-size:8px;padding:5px 8px;min-height:22px}
+.formula-note{max-width:940px;width:100%;margin:0 auto;min-height:23px;font-size:9px;gap:10px}
+.formula-note b,.formula-note i{font-size:13px}
+
+/* Screen 6 — verdict and reflection */
+.verdict-section{display:grid!important;grid-template-rows:14px minmax(0,1fr) 76px;gap:8px;padding:17px 5.3% 13px!important;overflow:hidden}
+.verdict-layout{grid-template-columns:.9fr 1.1fr;gap:25px;align-items:stretch;min-height:0;height:100%;margin:0!important}
+.verdict-copy{display:flex;flex-direction:column;justify-content:center;min-height:0}
+.verdict-copy h2{font-size:clamp(42px,4.5vw,56px)!important;line-height:.92}
+.verdict-copy>p{font-size:14px;line-height:1.33;max-width:370px;margin:12px 0 15px}
+.verdict-question{font-size:11px;margin-bottom:7px}
+.verdict-options{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:6px}
+.verdict-options button{padding:8px 7px;font-size:9px;line-height:1.15}
+.verdict-response{min-height:40px;margin:8px 0;font-size:10px;line-height:1.25}
+.final-document-button{padding:9px 11px;font-size:9px;align-self:flex-start}
+.verdict-evidence{height:100%;min-height:0;background:#fff;border:1px solid #dce4eb;box-shadow:0 10px 25px rgba(20,40,60,.06);padding:17px 20px;display:flex;flex-direction:column;justify-content:center;gap:13px;position:relative;overflow:hidden}
+.evidence-top{display:flex;justify-content:space-between;gap:10px;color:#7f8994;font-size:8px;letter-spacing:.09em;border-bottom:1px solid #e7edf2;padding-bottom:9px}
+.evidence-top b{color:#0874d7}
+.evidence-price{display:flex;align-items:baseline;justify-content:space-between;background:#edf6ff;padding:12px 15px}
+.evidence-price small,.evidence-pair small{font-size:8px;color:#7b8793;letter-spacing:.07em}
+.evidence-price strong{font:800 42px/.9 var(--display);color:#0874d7;letter-spacing:-.06em}
+.evidence-pair{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.evidence-pair>div{padding:10px 12px;border:1px solid #e7edf2}
+.evidence-pair small,.evidence-pair b{display:block}
+.evidence-pair b{font:700 24px var(--display);margin-top:3px}
+.evidence-note{display:flex;align-items:flex-start;gap:10px;color:#5e6974;background:#fbfcfd;padding:10px 12px}
+.evidence-note>span{color:#16834a;font-size:17px}
+.evidence-note p{font:13px/1.3 var(--serif);margin:0}
+.evidence-footer{margin-top:auto;border-top:1px solid #e8edf1;padding-top:8px;font-size:8px;color:#8c96a0;letter-spacing:.1em}
+.verdict-bottom{display:grid;grid-template-columns:1fr 1fr;gap:12px;min-height:0;align-items:stretch}
+.reflection{margin:0!important;max-width:none;gap:8px;min-height:0}
+.reflection>div{padding:8px 11px;min-width:0;overflow:hidden}
+.reflection span{font-size:7px}
+.reflection b{font-size:12px;margin:3px 0 4px}
+.reflection input{font-size:10px;padding:4px 0}
+.homework-window{max-width:none;width:100%;height:100%;min-height:0;margin:0;padding:9px 12px;gap:10px;box-shadow:none}
+.homework-folder{font-size:25px}
+.homework-window small{font-size:7px}
+.homework-window b{font-size:13px;line-height:1.1}
+.homework-window button{font-size:8px;padding:7px 8px}
+.homework-window p{display:none}
+.homework-details{display:none}
+.homework-details.show{display:block;position:fixed;z-index:130;right:4.5%;bottom:calc(var(--controls-h) + 16px);width:min(480px,90vw);max-height:70vh;overflow:auto;padding:19px 22px;box-shadow:0 18px 55px rgba(16,30,45,.2);background:#fff;border:1px solid #dce5ee}
+.homework-details h3{font:700 21px var(--display);margin:5px 0 10px}
+.homework-details p,.homework-details li{font:13px/1.4 var(--serif)}
+.homework-close,.final-close{position:absolute;top:9px;right:10px;border:1px solid #dce5ee;background:#fff;color:#45515c;width:27px;height:27px;font-size:19px;line-height:1}
+.site-footer.verdict-footer{display:none!important}
+.final-backdrop{display:none}
+body.show-final-doc .final-backdrop{display:block;position:fixed;inset:0;z-index:140;background:rgba(16,28,43,.42);backdrop-filter:blur(3px)}
+.final-paper:not(.hidden){display:block!important;position:fixed;z-index:141;top:50%;left:50%;transform:translate(-50%,-50%)!important;width:min(760px,90vw);max-height:84vh;overflow:auto;padding:30px 36px;box-shadow:0 24px 70px rgba(0,0,0,.24)}
+.final-paper h3{font-size:24px;max-width:78%;margin-top:24px}
+.final-paper p{font-size:14px;line-height:1.4}
+.final-recommendations{margin-top:14px;padding-top:11px}
+.signature-row{margin-top:13px;padding-top:9px}
+.final-close{z-index:3}
+body.show-final-doc{overflow:hidden!important}
+.toast{bottom:calc(var(--controls-h) + 12px);font-size:10px}
+
+/* Compact laptop heights: everything scales inside the same fixed view. */
+@media(max-height:760px){
+  :root{--chrome-h:29px;--nav-h:42px;--controls-h:48px}
+  .macbar{font-size:10px}
+  .stage-navigation a{height:32px;min-height:32px;font-size:10px}
+  .screen-control{padding:7px 10px!important}
+  .complaint-page{grid-template-rows:13px 55px minmax(0,1fr) 96px;gap:7px;padding-top:12px!important;padding-bottom:10px!important}
+  .complaint-heading h2{font-size:43px!important}
+  .complaint-lead{font-size:12px}
+  .doc-content{padding:10px 17px 9px}
+  .doc-content h3{font-size:18px;margin:12px 0 7px}
+  .doc-content p{font-size:11px;line-height:1.28;margin:4px 0}
+  .doc-stamp{top:34px;right:17px;font-size:7px}
+  .hypothesis-card{grid-template-columns:160px 1fr 1fr;gap:10px;padding:7px 11px}
+  .hypothesis-title h3{font-size:18px}
+  .hypothesis-statement p{font-size:12px}
+  .hypothesis-options button{font-size:8px;padding:6px}
+  .departments-section{grid-template-rows:13px 55px 116px minmax(0,1fr) 19px;gap:5px;padding-top:12px!important;padding-bottom:9px!important}
+  .folders-heading h2{font-size:43px!important}
+  .folders-heading p{font-size:11px}
+  .folder-desk{height:116px}
+  .folder{height:112px;min-height:112px!important}
+  .folder:before,.folder:after{top:27px;height:78px}
+  .folder-tab{top:17px;height:12px}
+  .folder img{width:54px;height:47px}
+  .folder b{font-size:7px}
+  .folder small{font-size:8px}
+  .open-folder{font-size:7px;margin-top:2px}
+  .inspector-content{padding:7px 12px!important}
+  .inspector-number{font-size:46px}
+  .inspector-main h3{font-size:17px}
+  .inspector-main p{font-size:12px}
+  .inspector-tasks span{font-size:8px}
+  .research-section{grid-template-rows:13px minmax(0,1fr) 42px;padding-top:13px!important;padding-bottom:10px!important}
+  .research-copy h2{font-size:49px}
+  .research-copy>p{font-size:13px;margin:9px 0}
+  .research-steps{margin:9px 0}
+  .research-steps li{font-size:10px;margin:5px 0}
+  .win98-body{padding:9px 15px 8px}
+  .timer-display{font-size:36px;margin:8px auto}
+  .timer-actions{margin:9px 0 7px}
+  .knowledge-section{grid-template-rows:13px 60px minmax(0,1fr) 11px 50px;gap:6px;padding-top:12px!important;padding-bottom:9px!important}
+  .knowledge-head h2{font-size:45px!important}
+  .knowledge-intro{font-size:12px}
+  .concept{padding:9px 12px;gap:9px}
+  .concept h3{font-size:17px}
+  .concept p{font-size:11px;line-height:1.25}
+  .concept-example{font-size:8px;margin-top:5px}
+  .concept-discovery{min-height:50px;padding:7px 10px}
+  .concept-discovery b{font-size:12px}
+  .calculator-section{grid-template-rows:13px 57px minmax(0,1fr) 20px;gap:6px;padding-top:12px!important;padding-bottom:9px!important}
+  .calculator-head h2{font-size:45px!important}
+  .calculator-head p{font-size:12px}
+  .calc-window-body{padding:7px 12px;gap:12px}
+  .calc-group-title{margin-bottom:4px;font-size:7px}
+  .calc-group-title.fixed-title{margin-top:8px}
+  .calc-inputs label{margin:3px 0;font-size:9px}
+  .calc-inputs input{padding:3px 5px;font-size:10px}
+  .calc-button{margin-top:6px;padding:5px 10px}
+  .calc-results{padding:7px 10px}
+  .result-big{margin:4px 0;padding:5px 8px}
+  .result-big b{font-size:30px}
+  .result-row{padding:4px 0;font-size:8px}
+  .verdict-section{grid-template-rows:13px minmax(0,1fr) 66px;gap:6px;padding-top:12px!important;padding-bottom:9px!important}
+  .verdict-copy h2{font-size:47px!important}
+  .verdict-copy>p{font-size:12px;margin:8px 0 10px}
+  .verdict-question{font-size:10px;margin-bottom:5px}
+  .verdict-options button{padding:6px;font-size:8px}
+  .verdict-response{min-height:32px;font-size:9px;margin:6px 0}
+  .verdict-evidence{padding:12px 15px;gap:9px}
+  .evidence-price{padding:8px 12px}
+  .evidence-price strong{font-size:35px}
+  .evidence-pair>div{padding:7px 9px}
+  .evidence-pair b{font-size:20px}
+  .evidence-note{padding:7px 9px}
+  .evidence-note p{font-size:11px}
+  .verdict-bottom{gap:8px}
+  .reflection>div{padding:6px 9px}
+  .reflection b{font-size:10px}
+  .homework-window{padding:7px 9px;gap:7px}
+  .homework-window b{font-size:11px}
+}
+
+/* Medium-width screens keep folders legible and avoid horizontal collisions. */
+@media(max-width:1100px){
+  .stage-navigation{padding-left:10px!important;padding-right:10px!important}
+  .stage-navigation a{gap:4px!important;padding:5px 5px!important;font-size:9px}
+  .stage-navigation a b{font-size:9px}
+  .complaint-page{padding-left:3.2%!important;padding-right:3.2%!important}
+  .complaint-content-grid{grid-template-columns:1fr .9fr;gap:12px}
+  .compact-object-panel{grid-template-columns:.8fr 1.2fr;gap:9px}
+  .departments-section,.knowledge-section,.calculator-section,.verdict-section{padding-left:3.2%!important;padding-right:3.2%!important}
+  .folder{padding-left:4px!important;padding-right:4px!important}
+  .folder img{margin-left:11px;width:54px;height:48px}
+  .folder b{font-size:7px}
+  .folder small{font-size:8px}
+  .hypothesis-card{grid-template-columns:145px 1fr 1.05fr}
+  .hypothesis-options{flex-wrap:wrap}
+}
+@media(max-width:850px){
+  :root{--nav-h:40px;--controls-h:46px}
+  .mac-left span:not(.apple-mark),.mac-right span:not(#clock):not(.mac-case){display:none}
+  .stage-navigation{overflow-x:auto!important;justify-content:flex-start!important}
+  .stage-navigation a{flex:0 0 auto!important}
+  .screen-control{min-width:82px;font-size:8px}
+  .screen-control-meta{font-size:7px}
+  .screen-mini-progress i{width:12px}
+  .complaint-page{grid-template-rows:13px 54px minmax(0,1fr) 112px}
+  .complaint-content-grid{grid-template-columns:1fr .85fr}
+  .compact-object-panel{grid-template-columns:1fr}
+  .object-photo-wrap{display:none}
+  .hypothesis-card{grid-template-columns:130px 1fr;grid-template-rows:1fr auto}
+  .hypothesis-choice{grid-column:2}
+  .folders-heading p{max-width:270px}
+  .folder-desk{gap:4px}
+  .folder small{display:none}
+  .inspector-content{grid-template-columns:48px 1fr}
+  .inspector-number{font-size:38px}
+  .concept-discovery{grid-template-columns:80px 1fr}
+  .concept-discovery>span:last-child{display:none}
+}
+
+/* Display-state priority: screen state must override each component's own grid/flex display. */
+.screen-view:not(.is-active){display:none!important}
+.desktop-launcher.screen-view.is-active,.hero.screen-view.is-active{display:block!important}
+.complaint-screen.screen-view.is-active{display:flex!important}
+.departments-section.screen-view.is-active,
+.research-section.screen-view.is-active,
+.knowledge-section.screen-view.is-active,
+.calculator-section.screen-view.is-active,
+.verdict-section.screen-view.is-active{display:grid!important}
+
+/* Fine alignment pass after viewport rendering */
+.departments-section{grid-template-rows:14px 84px 132px minmax(0,1fr) 22px}
+.folders-heading{min-height:0;overflow:hidden}
+.folders-heading h2{font-size:clamp(38px,3.5vw,46px)!important;line-height:.88!important}
+.inspector-main{justify-content:flex-start!important}
+@media(max-height:760px){
+  .departments-section{grid-template-rows:13px 76px 116px minmax(0,1fr) 19px}
+  .folders-heading h2{font-size:clamp(36px,3.5vw,42px)!important;line-height:.88!important}
+}
+
+/* Department explorer: file-manager composition, folders in a left rail, selected dossier on the right. */
+.departments-section{grid-template-rows:14px 67px minmax(0,1fr) 22px!important;gap:7px!important}
+.folders-heading{grid-column:1/-1;display:flex;justify-content:space-between;align-items:center;gap:30px;overflow:hidden}
+.folders-heading h2{font-size:clamp(40px,4.2vw,54px)!important;line-height:.92!important;white-space:nowrap}
+.folders-heading p{max-width:400px;font-size:13px;line-height:1.3;margin:0}
+.department-workspace{display:grid;grid-template-columns:minmax(250px, .34fr) minmax(0, .66fr);gap:18px;min-height:0;overflow:hidden}
+.folder-desk{display:flex!important;flex-direction:column;align-items:stretch;justify-content:center;gap:8px!important;height:100%!important;min-height:0!important;padding:3px 0!important;overflow:hidden}
+.folder{width:100%!important;flex:1 1 0!important;min-height:0!important;height:auto!important;max-height:78px;padding:6px 10px 6px 7px!important;display:grid!important;grid-template-columns:58px minmax(0,1fr);grid-template-rows:repeat(3,auto);column-gap:8px;align-content:center;align-items:center;transform:none!important;overflow:visible}
+.folder:nth-child(n){margin:0!important}
+.folder:before,.folder:after{top:0!important;left:0!important;right:0!important;height:100%!important;border-radius:6px!important}
+.folder-tab{left:8px!important;top:-7px!important;width:48px!important;height:10px!important}
+.folder img{grid-column:1;grid-row:1/4;place-self:center;width:48px!important;height:48px!important;max-width:48px;max-height:48px;margin:0!important;object-fit:cover;border:3px solid #fff!important;transform:rotate(-2deg)!important}
+.folder b{grid-column:2;grid-row:1;align-self:end;font-size:9px!important;margin:0 0 1px!important;letter-spacing:.05em}
+.folder small{grid-column:2;grid-row:2;font-size:10px!important;line-height:1.1;margin:0!important;display:block!important;color:#5c6672}
+.folder .open-folder{grid-column:2;grid-row:3;font-size:8px!important;margin:2px 0 0!important}
+.folder:hover,.folder.active{transform:translateX(5px)!important;filter:drop-shadow(0 4px 7px rgba(25,60,90,.1))}
+.folder-inspector{max-width:none!important;width:100%;height:100%;min-height:0!important;margin:0!important;display:flex;flex-direction:column;overflow:hidden}
+.inspector-bar{flex:0 0 30px;height:30px}
+.inspector-content{display:grid;grid-template-columns:75px minmax(0,1fr);gap:18px;padding:20px 22px!important;flex:1;min-height:0;overflow:hidden}
+.inspector-number{font-size:64px;align-self:start}
+.inspector-main{display:grid!important;grid-template-columns:minmax(0,1fr) minmax(190px,.82fr);gap:20px;align-items:stretch;min-width:0;min-height:0;justify-content:initial!important}
+.inspector-description{display:flex;flex-direction:column;justify-content:center;min-width:0}
+.inspector-description>small{font-size:9px;letter-spacing:.1em;color:#0874d7}
+.inspector-description h3{font-size:clamp(21px,2.1vw,28px);line-height:1.05;margin:6px 0 18px}
+.inspector-description .inspector-question-label{font-size:8px;color:#8a949e;letter-spacing:.1em}
+.inspector-description p{font:clamp(15px,1.35vw,18px)/1.35 var(--serif);color:#39434e;margin:7px 0 0}
+.inspector-task-panel{background:#f2f7fb;border:1px solid #e1edf6;padding:16px 17px;display:flex;flex-direction:column;justify-content:center;min-height:0;overflow:hidden}
+.inspector-task-panel>small{font-size:8px;color:#0874d7;letter-spacing:.1em;margin-bottom:12px}
+.inspector-tasks{display:grid!important;grid-template-columns:1fr;gap:11px!important}
+.inspector-tasks span{font-size:11px;line-height:1.35;color:#47535f}
+.inspector-result{margin-top:auto;padding-top:12px;font-size:8px}
+.folder-footnote{grid-column:1/-1}
+@media(max-height:760px){
+  .departments-section{grid-template-rows:13px 58px minmax(0,1fr) 19px!important;gap:5px!important}
+  .folders-heading h2{font-size:clamp(38px,4vw,48px)!important}
+  .folders-heading p{font-size:11px}
+  .department-workspace{grid-template-columns:minmax(225px,.33fr) minmax(0,.67fr);gap:13px}
+  .folder{max-height:68px;padding:4px 8px 4px 5px!important;grid-template-columns:51px minmax(0,1fr)}
+  .folder img{width:42px!important;height:42px!important;max-width:42px;max-height:42px}
+  .folder b{font-size:8px!important}
+  .folder small{font-size:9px!important}
+  .inspector-content{grid-template-columns:58px minmax(0,1fr);gap:12px;padding:12px 14px!important}
+  .inspector-number{font-size:52px}
+  .inspector-main{grid-template-columns:minmax(0,1fr) minmax(160px,.78fr);gap:13px}
+  .inspector-description h3{font-size:20px;margin:4px 0 12px}
+  .inspector-description p{font-size:14px}
+  .inspector-task-panel{padding:11px 12px}
+  .inspector-tasks{gap:8px!important}
+  .inspector-tasks span{font-size:9px}
+}
+@media(max-width:850px){
+  .department-workspace{grid-template-columns:minmax(200px,.36fr) minmax(0,.64fr);gap:8px}
+  .folder{grid-template-columns:42px minmax(0,1fr);padding-left:4px!important}
+  .folder img{width:35px!important;height:35px!important;max-width:35px;max-height:35px}
+  .folder small{display:block!important}
+  .inspector-content{grid-template-columns:42px minmax(0,1fr);gap:8px;padding:8px!important}
+  .inspector-number{font-size:36px}
+  .inspector-main{grid-template-columns:1fr;gap:7px}
+  .inspector-description h3{font-size:16px}
+  .inspector-description p{font-size:11px}
+  .inspector-task-panel{padding:7px 8px}
+  .inspector-tasks{gap:4px!important}
+  .inspector-tasks span{font-size:8px}
+  .inspector-task-panel>small{margin-bottom:5px}
+}
+
+/* Extra breathing room for two-line display headings on the concept and calculation screens. */
+.knowledge-section{grid-template-rows:14px 82px minmax(0,1fr) 13px 57px!important}
+.knowledge-head h2{font-size:clamp(40px,4.15vw,50px)!important;line-height:.88!important}
+.calculator-section{grid-template-rows:14px 78px minmax(0,1fr) 23px!important}
+.calculator-head h2{font-size:clamp(40px,4.2vw,50px)!important;line-height:.9!important}
+@media(max-height:760px){
+  .knowledge-section{grid-template-rows:13px 70px minmax(0,1fr) 11px 50px!important}
+  .knowledge-head h2{font-size:42px!important;line-height:.88!important}
+  .calculator-section{grid-template-rows:13px 66px minmax(0,1fr) 20px!important}
+  .calculator-head h2{font-size:42px!important;line-height:.9!important}
+}
+
+/* ------------------------------------------------------------
+   FINAL READABILITY + VERTICAL RHYTHM PASS
+   Overrides are intentionally consolidated here so later tweaks
+   do not re-introduce competing declarations earlier in the file.
+------------------------------------------------------------- */
+
+/* A consistent vertical centre for the content groups inside cards.
+   The complaint letter remains top-aligned by design. */
+.hypothesis-title,
+.hypothesis-statement,
+.hypothesis-choice,
+.inspector-description,
+.inspector-task-panel,
+.concept,
+.concept > div,
+.calc-inputs,
+.calc-results,
+.reflection > div,
+.homework-window,
+.research-copy,
+.win98-message,
+.verdict-evidence,
+.evidence-price,
+.evidence-pair > div,
+.evidence-note {
+  justify-content: center;
+}
+.hypothesis-title,
+.hypothesis-statement,
+.hypothesis-choice,
+.inspector-description,
+.inspector-task-panel,
+.concept > div,
+.calc-inputs,
+.calc-results,
+.reflection > div,
+.research-copy {
+  display: flex;
+  flex-direction: column;
+}
+.inspector-content { align-items: center; }
+.inspector-number { align-self: center !important; }
+.concept { align-items: center; }
+.concept-wide { align-items: center !important; }
+.concept-discovery { align-items: center; }
+.reflection > div { min-height: 0; }
+.doc-content { align-items: stretch; justify-content: flex-start; }
+
+/* Complaint screen: hypothesis is moved up, where it is visible immediately.
+   The two evidence columns now have exactly the same available height. */
+.complaint-page {
+  grid-template-rows: 14px 54px 112px minmax(0, 1fr) !important;
+  gap: 8px !important;
+  padding-top: 16px !important;
+  padding-bottom: 13px !important;
+}
+.complaint-heading {
+  display: flex;
+  align-items: center !important;
+  justify-content: flex-start !important;
+  margin: 0 !important;
+  min-height: 0;
+}
+.complaint-heading h2 {
+  font-size: clamp(39px, 4.3vw, 52px) !important;
+  line-height: .94 !important;
+}
+.complaint-content-grid {
+  grid-template-columns: minmax(0, 1.05fr) minmax(0, .95fr) !important;
+  align-items: stretch !important;
+  height: 100%;
+  min-height: 0;
+  gap: clamp(12px, 1.6vw, 22px) !important;
+}
+.complaint-window,
+.compact-object-panel {
+  height: 100% !important;
+  min-height: 0 !important;
+  align-self: stretch !important;
+}
+.complaint-window .doc-content {
+  justify-content: flex-start !important;
+  padding: 13px 20px 11px !important;
+}
+.doc-content h3 {
+  margin: 13px 0 8px !important;
+  font-size: clamp(17px, 1.55vw, 21px) !important;
+}
+.doc-content p {
+  font-size: clamp(12px, 1.02vw, 14px) !important;
+  line-height: 1.34 !important;
+  margin: 5px 0 !important;
+}
+.compact-object-panel {
+  display: grid !important;
+  grid-template-columns: minmax(0, 1fr) !important;
+  grid-template-rows: auto minmax(0, 1fr) auto !important;
+  align-content: stretch;
+  gap: 9px !important;
+  background: transparent;
+  border: 0;
+  box-shadow: none;
+  overflow: hidden;
+}
+.object-lead {
+  display: flex;
+  align-items: center;
+  min-height: 46px;
+  margin: 0 !important;
+  padding: 9px 13px;
+  border-left: 3px solid #0874d7;
+  background: #f3f8fd;
+  color: #4c5967;
+  font: 15px/1.34 var(--serif);
+}
+.compact-object-panel .object-photo-wrap {
+  width: 100%;
+  height: 100%;
+  min-height: 0;
+  max-width: none;
+  margin: 0;
+  padding: 7px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  background: #f3f4f5;
+}
+.compact-object-panel .object-photo {
+  width: 100%;
+  height: 100%;
+  min-height: 0;
+  max-height: none;
+  object-fit: contain;
+  object-position: center;
+}
+.compact-object-panel .scan-frame { inset: 25px 18px 35px; }
+.compact-object-panel .hud-top { font-size: 7px; }
+.compact-object-panel .hud-label { font-size: 7px; }
+.compact-object-panel .hud-bottom { font-size: 7px; }
+.compact-object-panel .object-caption {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 36px;
+  margin: 0 !important;
+  padding: 2px 4px 0;
+  max-width: none;
+}
+.compact-object-panel .object-caption small { font-size: 9px; }
+.compact-object-panel .object-caption b { font-size: clamp(15px, 1.25vw, 18px); }
+.hypothesis-card {
+  min-height: 0 !important;
+  height: 100%;
+  grid-template-columns: minmax(165px, .72fr) minmax(240px, 1.2fr) minmax(285px, 1.25fr) !important;
+  align-items: stretch !important;
+  padding: 12px 17px !important;
+  gap: 17px !important;
+}
+.hypothesis-title,
+.hypothesis-statement,
+.hypothesis-choice { min-width: 0; }
+.hypothesis-title h3 { font-size: clamp(21px, 1.8vw, 25px) !important; }
+.hypothesis-statement p { font-size: clamp(14px, 1.15vw, 16px) !important; line-height: 1.34 !important; }
+.hypothesis-statement small { font-size: 10px !important; line-height: 1.25; }
+.hypothesis-options { gap: 7px !important; flex-wrap: wrap !important; }
+.hypothesis-options button { font-size: 10px !important; padding: 8px 10px !important; }
+.hypothesis-status { font-size: 9px !important; line-height: 1.2; }
+
+/* Department tasks: larger, easier to read, vertically balanced. */
+.inspector-content { padding: 18px 21px !important; }
+.inspector-main { align-items: stretch !important; }
+.inspector-description { justify-content: center !important; }
+.inspector-description h3 { font-size: clamp(22px, 2vw, 28px) !important; line-height: 1.08 !important; }
+.inspector-description p { font-size: clamp(15px, 1.15vw, 17px) !important; line-height: 1.4 !important; }
+.inspector-task-panel {
+  justify-content: center !important;
+  padding: 18px 20px !important;
+}
+.inspector-task-panel > small { font-size: 10px !important; margin-bottom: 14px !important; }
+.inspector-tasks {
+  counter-reset: department-task;
+  gap: 13px !important;
+}
+.inspector-tasks span {
+  counter-increment: department-task;
+  display: block;
+  position: relative;
+  padding-left: 29px;
+  font-size: clamp(13px, 1.05vw, 15px) !important;
+  line-height: 1.38 !important;
+  color: #364454 !important;
+}
+.inspector-tasks span::before {
+  content: counter(department-task, decimal-leading-zero);
+  position: absolute;
+  left: 0;
+  top: 0;
+  color: #0874d7;
+  font: 700 10px/1.65 var(--font);
+  letter-spacing: .02em;
+}
+.inspector-result { font-size: 9px !important; padding-top: 11px !important; }
+
+/* Concepts: use the card space for readable explanations, not empty padding. */
+.knowledge-section {
+  grid-template-rows: 14px 78px minmax(0, 1fr) 14px 72px !important;
+  gap: 8px !important;
+}
+.knowledge-head { align-items: center !important; }
+.knowledge-head h2 { font-size: clamp(42px, 4.25vw, 54px) !important; }
+.knowledge-intro { font-size: clamp(15px, 1.2vw, 17px) !important; line-height: 1.4 !important; }
+.concepts {
+  grid-template-rows: .66fr 1fr !important;
+  gap: 12px !important;
+  min-height: 0;
+}
+.concept {
+  align-items: center !important;
+  padding: 17px 21px !important;
+  gap: 17px !important;
+}
+.concept > div {
+  justify-content: center !important;
+  min-width: 0;
+}
+.concept-number { font-size: 36px !important; }
+.concept small { font-size: 9px !important; }
+.concept h3 { font-size: clamp(21px, 1.7vw, 24px) !important; margin: 6px 0 8px !important; }
+.concept p { font-size: clamp(14px, 1.12vw, 16px) !important; line-height: 1.42 !important; }
+.concept-example { font-size: 11px !important; margin-top: 11px !important; line-height: 1.3; }
+.concept-mark { font-size: 48px !important; }
+.definition-foot { font-size: 9px !important; }
+.concept-discovery {
+  min-height: 72px !important;
+  padding: 12px 16px !important;
+  grid-template-columns: 115px minmax(0, 1fr) auto !important;
+  gap: 16px !important;
+}
+.concept-discovery b { font-size: clamp(15px, 1.2vw, 17px) !important; line-height: 1.35 !important; }
+.concept-discovery > span:last-child { font-size: 10px !important; }
+
+/* Research screen and calculator: raise instructional text to classroom-reading size. */
+.research-copy { justify-content: center !important; }
+.research-copy > p { font-size: clamp(15px, 1.2vw, 17px) !important; line-height: 1.42 !important; }
+.research-steps { margin: 17px 0 !important; }
+.research-steps li { font-size: clamp(13px, 1.05vw, 15px) !important; line-height: 1.35; margin: 10px 0 !important; }
+.research-steps b { width: 25px !important; height: 25px !important; flex: 0 0 25px; }
+.research-total { font-size: 10px !important; }
+.research-total b { font-size: 14px !important; }
+.research-reminder { align-items: center !important; min-height: 52px !important; height: 52px !important; padding: 8px 12px !important; }
+.research-reminder p { font-size: 14px !important; line-height: 1.35 !important; }
+.calc-inputs,
+.calc-results { justify-content: center !important; }
+.calc-group-title { font-size: 9px !important; margin-bottom: 8px !important; }
+.calc-group-title.fixed-title { margin-top: 14px !important; }
+.calc-inputs label { font-size: 12px !important; margin: 7px 0 !important; }
+.calc-inputs input { font-size: 13px !important; padding: 6px 8px !important; }
+.calc-button { font-size: 10px !important; padding: 8px 13px !important; }
+.result-label,.result-big small { font-size: 9px !important; }
+.result-row { font-size: 11px !important; padding: 7px 0 !important; }
+.result-row b { font-size: 12px !important; }
+.price-compare span { font-size: 9px !important; }
+.price-compare small { font-size: 10px !important; }
+.formula-note { font-size: 10px !important; }
+
+/* Verdict: the reflection area is larger and its writing prompts are centred. */
+.verdict-section {
+  grid-template-rows: 14px minmax(0, 1fr) 104px !important;
+  gap: 9px !important;
+}
+.verdict-copy { justify-content: center !important; }
+.verdict-copy > p { font-size: 15px !important; line-height: 1.42 !important; }
+.verdict-question { font-size: 12px !important; }
+.verdict-options button { font-size: 10px !important; padding: 9px 8px !important; }
+.verdict-response { font-size: 11px !important; line-height: 1.35 !important; }
+.verdict-evidence { justify-content: center !important; gap: 14px !important; }
+.evidence-price,
+.evidence-pair > div,
+.evidence-note { justify-content: center !important; }
+.evidence-pair b { font-size: 26px !important; }
+.evidence-note p { font-size: 14px !important; line-height: 1.35 !important; }
+.verdict-bottom { grid-template-columns: 1.15fr .85fr !important; gap: 12px !important; }
+.reflection { align-items: stretch !important; gap: 10px !important; }
+.reflection > div {
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: center !important;
+  padding: 10px 13px !important;
+  gap: 2px;
+}
+.reflection span { font-size: 8px !important; }
+.reflection b { font-size: 14px !important; margin: 4px 0 6px !important; }
+.reflection input { font-size: 12px !important; padding: 5px 0 !important; }
+.homework-window { align-items: center !important; padding: 11px 14px !important; }
+.homework-window small { font-size: 8px !important; }
+.homework-window b { font-size: 14px !important; line-height: 1.2 !important; }
+.homework-window button { font-size: 9px !important; }
+
+/* Short laptop viewports: keep the same hierarchy while tightening margins only. */
+@media (max-height: 720px) {
+  .complaint-page {
+    grid-template-rows: 13px 48px 96px minmax(0, 1fr) !important;
+    gap: 6px !important;
+    padding: 10px 4.2% 9px !important;
+  }
+  .complaint-heading h2 { font-size: 39px !important; }
+  .hypothesis-card { padding: 8px 12px !important; gap: 10px !important; }
+  .hypothesis-title h3 { font-size: 19px !important; }
+  .hypothesis-statement p { font-size: 13px !important; }
+  .hypothesis-options button { font-size: 9px !important; padding: 6px 8px !important; }
+  .object-lead { min-height: 38px; font-size: 13px; padding: 6px 10px; }
+  .doc-content { padding: 9px 14px 8px !important; }
+  .doc-content h3 { font-size: 16px !important; margin: 7px 0 5px !important; }
+  .doc-content p { font-size: 11.5px !important; line-height: 1.25 !important; margin: 3px 0 !important; }
+  .doc-stamp { top: 34px; right: 14px; font-size: 7px; }
+  .departments-section { grid-template-rows: 13px 54px minmax(0,1fr) 18px !important; gap: 5px !important; }
+  .inspector-content { padding: 10px 13px !important; }
+  .inspector-task-panel { padding: 11px 13px !important; }
+  .inspector-tasks { gap: 8px !important; }
+  .inspector-tasks span { font-size: 12px !important; }
+  .knowledge-section { grid-template-rows: 13px 66px minmax(0,1fr) 12px 61px !important; gap: 5px !important; }
+  .concept { padding: 10px 14px !important; }
+  .concept p { font-size: 13px !important; line-height: 1.32 !important; }
+  .concept h3 { font-size: 20px !important; }
+  .concept-discovery { min-height: 61px !important; padding: 8px 11px !important; }
+  .verdict-section { grid-template-rows: 13px minmax(0,1fr) 91px !important; gap: 6px !important; }
+  .reflection > div { padding: 7px 10px !important; }
+  .reflection b { font-size: 12px !important; }
+}
+
+/* Narrow screens are not presentation targets, but remain usable without overlap. */
+@media (max-width: 850px) {
+  .complaint-page { grid-template-rows: 13px 48px 104px minmax(0,1fr) !important; }
+  .complaint-content-grid { grid-template-columns: 1fr .9fr !important; }
+  .compact-object-panel { grid-template-rows: auto minmax(0,1fr) auto !important; }
+  .object-lead { font-size: 12px; }
+  .hypothesis-card { grid-template-columns: 120px minmax(0,1fr) !important; grid-template-rows: 1fr 1fr !important; }
+  .hypothesis-choice { grid-column: 2; }
+  .inspector-tasks span { font-size: 11px !important; }
+  .concept p { font-size: 12px !important; }
+  .verdict-section { grid-template-rows: 13px minmax(0,1fr) 96px !important; }
+}
+
+/* Final balance for the evidence and reflection area on the verdict screen. */
+.verdict-section {
+  grid-template-rows: 14px minmax(0, 1fr) 116px !important;
+}
+.verdict-evidence {
+  justify-content: space-between !important;
+  padding: 18px 21px !important;
+  gap: 11px !important;
+}
+.evidence-price {
+  min-height: 72px;
+  padding: 13px 16px !important;
+}
+.evidence-pair > div { min-height: 66px; }
+.evidence-note {
+  min-height: 62px;
+  align-items: center !important;
+  padding: 12px 14px !important;
+}
+.evidence-note p { font-size: 14px !important; }
+.evidence-footer { margin-top: 0 !important; }
+.verdict-bottom { min-height: 0; }
+.reflection > div { min-height: 106px; }
+.reflection b { font-size: 15px !important; }
+.reflection input { font-size: 12px !important; }
+@media (max-height: 720px) {
+  .verdict-section { grid-template-rows: 13px minmax(0, 1fr) 98px !important; }
+  .evidence-price { min-height: 60px; padding: 9px 12px !important; }
+  .evidence-pair > div { min-height: 54px; }
+  .evidence-note { min-height: 50px; padding: 8px 10px !important; }
+  .reflection > div { min-height: 88px; }
+}
+
+
+/* FINAL VISUAL POLISH — clear highlights, folder hierarchy and safe spacing. */
+
+/* The hypothesis is the key checkpoint on the complaint screen. */
+.hypothesis-card {
+  background: linear-gradient(112deg, #e7f2ff 0%, #dcecff 100%) !important;
+  border: 1px solid #b9d7f5 !important;
+  border-left: 5px solid #0874d7 !important;
+  box-shadow: 0 9px 24px rgba(8, 91, 164, .10) !important;
+  padding: 12px 17px 12px 15px !important;
+  gap: 16px !important;
+}
+.hypothesis-title small { color: #075eab !important; }
+.hypothesis-title h3 { color: #172f49 !important; }
+.hypothesis-title h3 span { color: #086ac2 !important; }
+.hypothesis-statement p { color: #203b57 !important; }
+.hypothesis-statement small { color: #506d87 !important; }
+.hypothesis-options button {
+  background: rgba(255,255,255,.92) !important;
+  border-color: #b9d2ec !important;
+  color: #234766 !important;
+}
+.hypothesis-options button.chosen {
+  background: #0874d7 !important;
+  border-color: #0874d7 !important;
+  color: #fff !important;
+}
+.hypothesis-status { color: #155b92 !important; }
+
+/* Folder labels: number first, department name second, supporting text last. */
+.folder {
+  display: grid !important;
+  grid-template-columns: 48px minmax(0, 1fr) !important;
+  grid-template-rows: minmax(0, auto) auto auto !important;
+  column-gap: 8px !important;
+  row-gap: 1px !important;
+  align-content: center !important;
+  align-items: center !important;
+  padding: 5px 9px 5px 7px !important;
+  text-align: left !important;
+}
+.folder img {
+  grid-column: 1 !important;
+  grid-row: 1 / 4 !important;
+  width: 43px !important;
+  height: 43px !important;
+  max-width: 43px !important;
+  max-height: 43px !important;
+  margin: 0 !important;
+  place-self: center !important;
+  object-fit: cover !important;
+}
+.folder-name-group {
+  grid-column: 2 !important;
+  grid-row: 1 !important;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: flex-start !important;
+  justify-content: center !important;
+  gap: 2px !important;
+  min-width: 0 !important;
+}
+.folder-index {
+  display: block !important;
+  color: #126bb7 !important;
+  font: 800 14px/.95 var(--display) !important;
+  letter-spacing: .04em !important;
+}
+.folder b {
+  display: block !important;
+  margin: 0 !important;
+  color: #26384a !important;
+  font: 700 12px/1.05 var(--font) !important;
+  letter-spacing: -.015em !important;
+  overflow-wrap: anywhere;
+}
+.folder small {
+  grid-column: 2 !important;
+  grid-row: 2 !important;
+  display: block !important;
+  margin: 1px 0 0 !important;
+  color: #5b6875 !important;
+  font: 9px/1.08 var(--font) !important;
+}
+.folder .open-folder {
+  grid-column: 2 !important;
+  grid-row: 3 !important;
+  margin: 2px 0 0 !important;
+  color: #0874d7 !important;
+  font: 700 8px/1.05 var(--font) !important;
+  letter-spacing: .045em !important;
+}
+
+/* More breathing room between the heading and the three concept cards. */
+.knowledge-section {
+  grid-template-rows: 14px 82px minmax(0, 1fr) 14px 72px !important;
+  row-gap: 12px !important;
+}
+.knowledge-head { padding-bottom: 3px !important; }
+.concepts { margin-top: 4px !important; }
+
+/* Calculator: slightly narrower window; larger heading with its own space. */
+.calculator-section {
+  grid-template-rows: 14px 96px minmax(0, 1fr) 23px !important;
+  row-gap: 8px !important;
+}
+.calculator-head {
+  min-height: 0 !important;
+  align-items: center !important;
+  gap: 30px !important;
+}
+.calculator-head h2 {
+  font-size: clamp(48px, 4.55vw, 59px) !important;
+  line-height: .88 !important;
+  max-width: 56% !important;
+}
+.calculator-head p {
+  max-width: 410px !important;
+  font-size: 14px !important;
+  line-height: 1.35 !important;
+}
+.calc-window {
+  width: 94% !important;
+  max-width: 870px !important;
+  height: 94% !important;
+  max-height: 100% !important;
+  align-self: center !important;
+}
+
+/* Verdict: separate heading, explanation and evidence values clearly. */
+.verdict-copy h2 {
+  line-height: 1.02 !important;
+  margin: 0 0 13px !important;
+}
+.verdict-copy > p {
+  margin: 0 0 20px !important;
+  max-width: 390px !important;
+  line-height: 1.45 !important;
+}
+.verdict-question { margin: 0 0 9px !important; }
+.verdict-options { gap: 9px !important; }
+.verdict-response { margin: 12px 0 14px !important; }
+.verdict-evidence {
+  gap: 16px !important;
+  padding: 20px 22px !important;
+}
+.evidence-price {
+  display: grid !important;
+  grid-template-columns: minmax(0, 1fr) !important;
+  justify-content: start !important;
+  align-items: start !important;
+  gap: 7px !important;
+  min-height: 91px !important;
+  padding: 13px 16px !important;
+}
+.evidence-price small {
+  display: block !important;
+  max-width: 100% !important;
+  font-size: 10px !important;
+  line-height: 1.25 !important;
+  letter-spacing: .055em !important;
+  white-space: normal !important;
+}
+.evidence-price strong {
+  display: block !important;
+  font-size: 36px !important;
+  line-height: .95 !important;
+  white-space: nowrap !important;
+}
+.evidence-pair { gap: 13px !important; margin-top: 2px !important; }
+.evidence-pair > div { padding: 12px 13px !important; }
+.evidence-note { margin-top: 2px !important; padding: 12px 14px !important; }
+.verdict-bottom { gap: 16px !important; }
+.reflection { gap: 11px !important; }
+.reflection > div { padding: 10px 13px !important; }
+.homework-window { padding: 11px 14px !important; }
+
+/* Compact but readable values on shorter laptop screens. */
+@media (max-height: 760px) {
+  .hypothesis-card { padding: 8px 12px 8px 10px !important; gap: 10px !important; }
+  .hypothesis-title h3 { font-size: 19px !important; }
+  .hypothesis-statement p { font-size: 13px !important; }
+  .hypothesis-options button { font-size: 9px !important; padding: 6px 8px !important; }
+  .folder-index { font-size: 13px !important; }
+  .folder b { font-size: 11px !important; }
+  .folder small { font-size: 8px !important; }
+  .folder .open-folder { font-size: 7px !important; }
+  .knowledge-section {
+    grid-template-rows: 13px 72px minmax(0, 1fr) 12px 62px !important;
+    row-gap: 9px !important;
+  }
+  .concepts { margin-top: 4px !important; }
+  .calculator-section {
+    grid-template-rows: 13px 88px minmax(0, 1fr) 20px !important;
+    row-gap: 7px !important;
+  }
+  .calculator-head h2 { font-size: clamp(45px, 4.35vw, 53px) !important; }
+  .calc-window { width: 92% !important; height: 92% !important; }
+  .verdict-copy h2 { margin-bottom: 10px !important; }
+  .verdict-copy > p { margin-bottom: 15px !important; }
+  .verdict-evidence { gap: 11px !important; padding: 13px 15px !important; }
+  .evidence-price { min-height: 78px !important; padding: 9px 12px !important; gap: 5px !important; }
+  .evidence-price strong { font-size: 32px !important; }
+  .evidence-pair { gap: 9px !important; }
+  .evidence-pair > div { padding: 8px 10px !important; }
+  .evidence-note { padding: 8px 10px !important; }
+  .verdict-bottom { gap: 11px !important; }
+}
+
+@media (max-width: 1100px) {
+  .folder { grid-template-columns: 39px minmax(0, 1fr) !important; column-gap: 6px !important; }
+  .folder img { width: 35px !important; height: 35px !important; }
+  .folder-index { font-size: 12px !important; }
+  .folder b { font-size: 10px !important; }
+  .folder small { font-size: 8px !important; }
+  .folder .open-folder { font-size: 7px !important; }
+  .calculator-head h2 { font-size: clamp(44px, 4.8vw, 55px) !important; }
+  .calc-window { width: 96% !important; }
+}
+
+/* Keep folder department titles aligned with their number, not at the far edge. */
+.folder-name-group { align-items: flex-start !important; width: 100% !important; }
+.folder-name-group .folder-index { align-self: flex-start !important; }
+.folder-name-group b {
+  align-self: flex-start !important;
+  width: 100% !important;
+  text-align: left !important;
+  overflow-wrap: anywhere !important;
+}
+
+/* FINAL POLISH — folder numbering, readable task panel, concept spacing and verdict colors. */
+
+/* Hypothesis: make the three choices easier to tap and read without forcing overlap. */
+.hypothesis-card {
+  grid-template-columns: minmax(155px, .72fr) minmax(225px, 1.12fr) minmax(285px, 1.2fr) !important;
+  gap: 15px !important;
+}
+.hypothesis-options {
+  display: grid !important;
+  grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+  gap: 7px !important;
+  align-content: center !important;
+}
+.hypothesis-options button {
+  min-width: 0 !important;
+  min-height: 42px !important;
+  padding: 8px 7px !important;
+  font-size: 11px !important;
+  line-height: 1.15 !important;
+  white-space: normal !important;
+  text-align: center !important;
+}
+.hypothesis-options button:last-child { grid-column: auto; }
+.hypothesis-status { font-size: 9px !important; margin-top: 7px !important; }
+
+/* Folder cards: index sits at the upper-right corner, safely inside each folder. */
+.folder {
+  position: relative !important;
+  grid-template-columns: 44px minmax(0, 1fr) !important;
+  grid-template-rows: 17px auto auto auto !important;
+  row-gap: 2px !important;
+  column-gap: 8px !important;
+  padding: 5px 10px 5px 7px !important;
+  overflow: hidden !important;
+}
+.folder-name-group { display: contents !important; }
+.folder img {
+  grid-column: 1 !important;
+  grid-row: 1 / 5 !important;
+  width: 41px !important;
+  height: 41px !important;
+  max-width: 41px !important;
+  max-height: 41px !important;
+  place-self: center !important;
+}
+.folder-index {
+  grid-column: 2 !important;
+  grid-row: 1 !important;
+  justify-self: end !important;
+  align-self: center !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  min-width: 27px !important;
+  min-height: 17px !important;
+  padding: 1px 5px !important;
+  border-radius: 4px !important;
+  background: rgba(255,255,255,.56) !important;
+  color: #155f9c !important;
+  font: 800 15px/.95 var(--display) !important;
+  letter-spacing: .04em !important;
+  z-index: 2 !important;
+}
+.folder b {
+  grid-column: 2 !important;
+  grid-row: 2 !important;
+  align-self: center !important;
+  width: 100% !important;
+  margin: 0 !important;
+  padding-right: 2px !important;
+  color: #26384a !important;
+  font: 800 12px/1.08 var(--font) !important;
+  letter-spacing: -.015em !important;
+  overflow-wrap: anywhere !important;
+}
+.folder small {
+  grid-column: 2 !important;
+  grid-row: 3 !important;
+  font: 9px/1.1 var(--font) !important;
+  margin: 0 !important;
+}
+.folder .open-folder {
+  grid-column: 2 !important;
+  grid-row: 4 !important;
+  margin: 1px 0 0 !important;
+  font: 700 8px/1.05 var(--font) !important;
+}
+
+/* Department information window: large number above the title; clear task heading. */
+.inspector-content {
+  display: block !important;
+  padding: 16px 19px !important;
+  min-height: 0 !important;
+  height: auto !important;
+  flex: 1 1 0 !important;
+  overflow: hidden !important;
+}
+.inspector-main {
+  display: grid !important;
+  grid-template-columns: minmax(0, 1.02fr) minmax(0, .98fr) !important;
+  gap: 18px !important;
+  height: 100% !important;
+  min-height: 0 !important;
+  align-items: stretch !important;
+}
+.inspector-description {
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: center !important;
+  align-items: flex-start !important;
+  min-width: 0 !important;
+  padding: 5px 4px !important;
+  gap: 0 !important;
+}
+.inspector-description > small {
+  font-size: 10px !important;
+  line-height: 1.2 !important;
+  margin-bottom: 5px !important;
+  color: #0874d7 !important;
+  letter-spacing: .09em !important;
+}
+.inspector-number {
+  display: block !important;
+  align-self: flex-start !important;
+  margin: 0 0 6px !important;
+  color: #b6d6f2 !important;
+  font: 900 clamp(34px, 3vw, 43px)/.88 var(--display) !important;
+  letter-spacing: -.055em !important;
+}
+.inspector-description h3 {
+  margin: 0 0 13px !important;
+  font-size: clamp(21px, 1.7vw, 25px) !important;
+  line-height: 1.08 !important;
+  max-width: 100% !important;
+}
+.inspector-question-label {
+  margin-top: 0 !important;
+  font-size: 10px !important;
+  line-height: 1.2 !important;
+  font-weight: 800 !important;
+  letter-spacing: .07em !important;
+}
+.inspector-description p {
+  margin: 6px 0 0 !important;
+  font-size: clamp(14px, 1.08vw, 16px) !important;
+  line-height: 1.38 !important;
+}
+.inspector-task-panel {
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: center !important;
+  align-items: stretch !important;
+  min-width: 0 !important;
+  padding: 16px 18px !important;
+  gap: 0 !important;
+}
+.inspector-task-panel > small {
+  display: block !important;
+  align-self: flex-start !important;
+  margin: 0 0 15px !important;
+  color: #1c3f5c !important;
+  font: 800 13px/1.2 var(--font) !important;
+  letter-spacing: .025em !important;
+}
+.inspector-tasks {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 12px !important;
+}
+.inspector-tasks span {
+  font-size: clamp(13px, 1.02vw, 15px) !important;
+  line-height: 1.36 !important;
+  padding-left: 31px !important;
+}
+.inspector-tasks span::before {
+  font-size: 11px !important;
+  line-height: 1.5 !important;
+}
+.inspector-result {
+  margin-top: 13px !important;
+  padding-top: 10px !important;
+  font-size: 9px !important;
+}
+
+/* Knowledge screen: give the title and the section label their own breathing room. */
+.knowledge-section {
+  grid-template-rows: 20px 110px minmax(0, 1fr) 10px 68px !important;
+  row-gap: 12px !important;
+}
+.knowledge-section > .section-kicker {
+  display: flex !important;
+  align-items: center !important;
+  font-size: 10px !important;
+  line-height: 1.2 !important;
+  letter-spacing: .11em !important;
+  color: #637487 !important;
+}
+.knowledge-head {
+  align-items: center !important;
+  padding: 3px 0 5px !important;
+  min-height: 0 !important;
+  overflow: visible !important;
+}
+.knowledge-head h2 {
+  line-height: .98 !important;
+  margin: 0 !important;
+}
+.concepts {
+  margin-top: 0 !important;
+  align-self: stretch !important;
+  min-height: 0 !important;
+  grid-template-rows: .82fr 1fr !important;
+  gap: 12px !important;
+}
+.concept-wide { min-height: 0 !important; }
+
+/* Last screen: reflection and homework are distinct tinted panels, not white cards. */
+.reflection > div:first-child {
+  background: #edf6ff !important;
+  border: 1px solid #c9e0f4 !important;
+  box-shadow: inset 0 3px 0 #9fc8ec !important;
+}
+.reflection > div:last-child {
+  background: #f3effb !important;
+  border: 1px solid #ddd2f0 !important;
+  box-shadow: inset 0 3px 0 #c7b4e6 !important;
+}
+.homework-window {
+  background: #fff5dc !important;
+  border: 1px solid #edddb0 !important;
+  box-shadow: inset 0 3px 0 #e7c76e !important;
+}
+.homework-window .homework-folder { color: #b48a25 !important; }
+.homework-window small { color: #96721f !important; }
+.homework-window b { color: #3e392c !important; }
+.homework-window button {
+  background: #fffdf7 !important;
+  border: 1px solid #e6d39d !important;
+  color: #72591a !important;
+}
+
+@media (max-height: 760px) {
+  .inspector-content { padding: 11px 14px !important; }
+  .inspector-main { gap: 12px !important; }
+  .inspector-task-panel { padding: 11px 13px !important; }
+  .inspector-task-panel > small { font-size: 12px !important; margin-bottom: 10px !important; }
+  .inspector-tasks { gap: 8px !important; }
+  .inspector-tasks span { font-size: 12px !important; line-height: 1.28 !important; }
+  .inspector-description h3 { margin-bottom: 9px !important; }
+  .inspector-number { font-size: 34px !important; margin-bottom: 4px !important; }
+  .knowledge-section {
+    grid-template-rows: 17px 98px minmax(0, 1fr) 8px 61px !important;
+    row-gap: 8px !important;
+  }
+  .knowledge-head h2 { font-size: clamp(38px, 4vw, 48px) !important; }
+  .concept-discovery { min-height: 61px !important; }
+  .concepts { grid-template-rows: .82fr 1fr !important; }
+}
+@media (max-width: 1100px) {
+  .folder-index { font-size: 14px !important; }
+  .folder b { font-size: 11px !important; }
+  .inspector-main { grid-template-columns: minmax(0, .95fr) minmax(0, 1.05fr) !important; gap: 10px !important; }
+  .inspector-task-panel { padding: 10px 12px !important; }
+  .inspector-task-panel > small { font-size: 12px !important; margin-bottom: 9px !important; }
+  .inspector-tasks { gap: 7px !important; }
+  .inspector-tasks span { font-size: 12px !important; }
+}
+
+@media (max-width: 850px) {
+  .hypothesis-options { grid-template-columns: repeat(2, minmax(0,1fr)) !important; }
+  .hypothesis-options button:last-child { grid-column: 1 / -1; }
+}
+
+/* FINAL USER REQUEST — restore the supplied visual assets and centre the active department identity. */
+.folder-inspector .inspector-description {
+  align-items: center !important;
+  justify-content: center !important;
+  text-align: center !important;
+  padding: 8px 18px !important;
+}
+.folder-inspector .inspector-description > small {
+  align-self: center !important;
+  width: 100% !important;
+  margin: 0 0 10px !important;
+  color: #176db4 !important;
+  font-size: clamp(12px, 1vw, 14px) !important;
+  font-weight: 850 !important;
+  line-height: 1.15 !important;
+  letter-spacing: .1em !important;
+  text-align: center !important;
+}
+.folder-inspector .inspector-number {
+  align-self: center !important;
+  width: 100% !important;
+  margin: 0 0 15px !important;
+  color: #9fc6e8 !important;
+  font-size: clamp(58px, 5.1vw, 74px) !important;
+  line-height: .92 !important;
+  letter-spacing: -.06em !important;
+  text-align: center !important;
+}
+.folder-inspector .inspector-description h3 {
+  align-self: center !important;
+  width: 100% !important;
+  max-width: 100% !important;
+  margin: 0 0 18px !important;
+  color: #26384a !important;
+  font-size: clamp(21px, 1.7vw, 26px) !important;
+  line-height: 1.12 !important;
+  text-align: center !important;
+  overflow-wrap: break-word !important;
+}
+.folder-inspector .inspector-question-label {
+  align-self: center !important;
+  width: 100% !important;
+  margin: 0 !important;
+  color: #617589 !important;
+  font-size: 10px !important;
+  line-height: 1.2 !important;
+  letter-spacing: .075em !important;
+  text-align: center !important;
+}
+.folder-inspector .inspector-description p {
+  width: 100% !important;
+  max-width: 100% !important;
+  margin: 8px 0 0 !important;
+  color: #344a5e !important;
+  font-size: clamp(14px, 1.05vw, 16px) !important;
+  line-height: 1.38 !important;
+  text-align: center !important;
+}
+
+@media (max-height: 760px) {
+  .folder-inspector .inspector-description { padding: 5px 13px !important; }
+  .folder-inspector .inspector-description > small { margin-bottom: 7px !important; font-size: 11px !important; }
+  .folder-inspector .inspector-number { font-size: clamp(52px, 4.8vw, 64px) !important; margin-bottom: 10px !important; }
+  .folder-inspector .inspector-description h3 { font-size: clamp(19px, 1.55vw, 23px) !important; margin-bottom: 12px !important; }
+  .folder-inspector .inspector-description p { margin-top: 6px !important; font-size: 13px !important; }
+}
+
+
+/* FINAL REQUEST — department badge centred above the department title. */
+.folder-inspector .inspector-description {
+  align-items: center !important;
+  justify-content: center !important;
+  text-align: center !important;
+  padding: 8px 18px !important;
+}
+.folder-inspector .inspector-description > small {
+  align-self: center !important;
+  width: 100% !important;
+  margin: 0 0 10px !important;
+  color: #176db4 !important;
+  font-size: clamp(12px, 1vw, 14px) !important;
+  font-weight: 850 !important;
+  line-height: 1.15 !important;
+  letter-spacing: .1em !important;
+  text-align: center !important;
+}
+.folder-inspector .inspector-number {
+  align-self: center !important;
+  width: 100% !important;
+  margin: 0 0 15px !important;
+  color: #9fc6e8 !important;
+  font-size: clamp(58px, 5.1vw, 74px) !important;
+  line-height: .92 !important;
+  letter-spacing: -.06em !important;
+  text-align: center !important;
+}
+.folder-inspector .inspector-description h3 {
+  align-self: center !important;
+  width: 100% !important;
+  max-width: 100% !important;
+  margin: 0 0 18px !important;
+  color: #26384a !important;
+  font-size: clamp(21px, 1.7vw, 26px) !important;
+  line-height: 1.12 !important;
+  text-align: center !important;
+  overflow-wrap: break-word !important;
+}
+.folder-inspector .inspector-question-label {
+  align-self: center !important;
+  width: 100% !important;
+  margin: 0 !important;
+  color: #617589 !important;
+  font-size: 10px !important;
+  line-height: 1.2 !important;
+  letter-spacing: .075em !important;
+  text-align: center !important;
+}
+.folder-inspector .inspector-description p {
+  width: 100% !important;
+  max-width: 100% !important;
+  margin: 8px 0 0 !important;
+  color: #344a5e !important;
+  font-size: clamp(14px, 1.05vw, 16px) !important;
+  line-height: 1.38 !important;
+  text-align: center !important;
+}
+@media (max-height: 760px) {
+  .folder-inspector .inspector-description { padding: 5px 13px !important; }
+  .folder-inspector .inspector-description > small { margin-bottom: 7px !important; font-size: 11px !important; }
+  .folder-inspector .inspector-number { font-size: clamp(52px, 4.8vw, 64px) !important; margin-bottom: 10px !important; }
+  .folder-inspector .inspector-description h3 { font-size: clamp(19px, 1.55vw, 23px) !important; margin-bottom: 12px !important; }
+  .folder-inspector .inspector-description p { margin-top: 6px !important; font-size: 13px !important; }
+}
