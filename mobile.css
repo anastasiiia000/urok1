@@ -712,3 +712,225 @@
   .object-photo-wrap { height: 155px !important; }
   .calc-inputs label { grid-template-columns: minmax(0,1fr) 92px 16px !important; font-size: 11px !important; }
 }
+
+
+/* ------------------------------------------------------------
+   MOBILE OVERLAP FIX
+   The desktop screen-fit stylesheet uses high-specificity rules
+   to force lesson stages into a fixed CSS grid. Those rules were
+   winning over the earlier mobile display overrides. On phones,
+   each stage must become a normal vertical document inside its
+   own scrollable screen. Desktop rules remain untouched.
+------------------------------------------------------------- */
+@media (max-width: 850px) {
+  /* Win the cascade against:
+     .departments-section.screen-view.is-active,
+     .research-section.screen-view.is-active, etc. */
+  main#top > .screen-view.stage-screen.is-active {
+    display: block !important;
+    position: absolute !important;
+    inset: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+    min-height: 0 !important;
+    max-height: none !important;
+    grid-template-columns: none !important;
+    grid-template-rows: none !important;
+    grid-auto-rows: auto !important;
+    align-content: initial !important;
+    overflow-x: hidden !important;
+    overflow-y: auto !important;
+    overscroll-behavior: contain !important;
+    -webkit-overflow-scrolling: touch !important;
+    box-sizing: border-box !important;
+    padding-bottom: calc(var(--controls-h) + 18px) !important;
+  }
+
+  /* The complaint is a wrapper around its paper-like inner page. */
+  main#top > .complaint-screen.stage-screen.is-active {
+    display: block !important;
+    padding: 0 !important;
+  }
+  .complaint-screen .complaint-page {
+    display: flex !important;
+    flex-direction: column !important;
+    width: 100% !important;
+    height: auto !important;
+    min-height: 0 !important;
+    max-height: none !important;
+    overflow: visible !important;
+    box-sizing: border-box !important;
+  }
+  .complaint-content-grid {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: stretch !important;
+    height: auto !important;
+    min-height: 0 !important;
+  }
+  .complaint-window,
+  .compact-object-panel {
+    flex: 0 0 auto !important;
+    min-width: 0 !important;
+  }
+
+  /* Department screen: folder cards and inspector follow each other. */
+  main#top > .departments-section.stage-screen.is-active {
+    display: block !important;
+    height: 100% !important;
+    min-height: 0 !important;
+    overflow-x: hidden !important;
+    overflow-y: auto !important;
+  }
+  .departments-section .department-workspace {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: stretch !important;
+    width: 100% !important;
+    height: auto !important;
+    min-height: 0 !important;
+    gap: 14px !important;
+  }
+  .departments-section .folder-desk {
+    height: auto !important;
+    min-height: 0 !important;
+    overflow: visible !important;
+  }
+  .departments-section .folder-inspector {
+    display: flex !important;
+    flex-direction: column !important;
+    width: 100% !important;
+    height: auto !important;
+    min-height: 0 !important;
+    max-height: none !important;
+    overflow: visible !important;
+  }
+  .departments-section .inspector-content {
+    display: block !important;
+    flex: 0 0 auto !important;
+    min-height: 0 !important;
+    overflow: visible !important;
+  }
+
+  /* Research, concepts, calculator and verdict use natural content height. */
+  main#top > .research-section.stage-screen.is-active,
+  main#top > .knowledge-section.stage-screen.is-active,
+  main#top > .calculator-section.stage-screen.is-active,
+  main#top > .verdict-section.stage-screen.is-active {
+    display: block !important;
+    height: 100% !important;
+    min-height: 0 !important;
+    overflow-x: hidden !important;
+    overflow-y: auto !important;
+  }
+
+  .research-section .research-layout {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: stretch !important;
+    height: auto !important;
+    min-height: 0 !important;
+  }
+  .research-section .win98-dialog,
+  .research-section .research-reminder {
+    flex: 0 0 auto !important;
+    min-width: 0 !important;
+  }
+
+  .knowledge-section .knowledge-head {
+    min-width: 0 !important;
+    height: auto !important;
+  }
+  .knowledge-section .concepts {
+    display: grid !important;
+    grid-template-columns: minmax(0, 1fr) !important;
+    grid-template-rows: auto !important;
+    height: auto !important;
+    min-height: 0 !important;
+  }
+  .knowledge-section .concept,
+  .knowledge-section .concept-wide,
+  .knowledge-section .concept-discovery {
+    min-width: 0 !important;
+    height: auto !important;
+    min-height: 0 !important;
+    overflow: visible !important;
+  }
+
+  .calculator-section .calculator-head {
+    min-width: 0 !important;
+    height: auto !important;
+  }
+  .calculator-section .calc-window {
+    width: 100% !important;
+    height: auto !important;
+    min-height: 0 !important;
+    max-height: none !important;
+    overflow: visible !important;
+  }
+  .calculator-section .calc-window-body {
+    display: grid !important;
+    grid-template-columns: minmax(0, 1fr) !important;
+    height: auto !important;
+    min-height: 0 !important;
+    overflow: visible !important;
+  }
+  .calculator-section .calc-inputs,
+  .calculator-section .calc-results {
+    min-width: 0 !important;
+    height: auto !important;
+    min-height: 0 !important;
+    overflow: visible !important;
+  }
+
+  .verdict-section .verdict-layout,
+  .verdict-section .verdict-bottom {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: stretch !important;
+    width: 100% !important;
+    height: auto !important;
+    min-height: 0 !important;
+  }
+  .verdict-section .verdict-evidence,
+  .verdict-section .reflection,
+  .verdict-section .homework-window {
+    width: 100% !important;
+    height: auto !important;
+    min-height: 0 !important;
+    overflow: visible !important;
+  }
+
+  /* Prevent long labels and controls from forcing horizontal collisions. */
+  .screen-view.stage-screen.is-active :where(h1,h2,h3,p,small,b,strong,button,label,span) {
+    min-width: 0;
+    overflow-wrap: anywhere;
+  }
+  .screen-view.stage-screen.is-active button,
+  .screen-view.stage-screen.is-active input {
+    max-width: 100%;
+  }
+}
+
+/* Small phones: keep a single column and comfortable side gutters. */
+@media (max-width: 420px) {
+  .screen-view.stage-screen.is-active {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+  }
+  .complaint-screen .complaint-page,
+  .departments-section,
+  .research-section,
+  .knowledge-section,
+  .calculator-section,
+  .verdict-section {
+    padding-left: 13px !important;
+    padding-right: 13px !important;
+  }
+  .folder-desk {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  }
+  .folder {
+    min-width: 0 !important;
+  }
+}
